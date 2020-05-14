@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom';
 import './assets/css/index.css';
 import Homepage from './views/Homepage';
 import * as serviceWorker from './serviceWorker';
-import 'bootstrap/dist/css/bootstrap.css'
+
+import Register from "./views/Register";
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <Homepage />
+    <Homepage/>
   </React.StrictMode>,
   document.getElementById('root')
 );
