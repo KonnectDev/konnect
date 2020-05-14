@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('koins');
             $table->integer('phonenumber');
-            $table->integer('contrycode');
+            $table->integer('countrycode');
             $table->longText('bio');
             $table->date('birthdate');
             $table->rememberToken();

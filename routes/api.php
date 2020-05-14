@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\User;
+use App\Guild;
+use App\GuildMember;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +17,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+
+Route::get('user/{id}', function($id) {
+    return User::find($id);
+});
+
+Route::get('users', function() {
+    return User::all();
+});
+
+Route::get('guilds', function() {
+    return Guild::all();
+});
+
+Route::get('guild/{id}', function($id) {
+    return Guild::find($id);
 });
