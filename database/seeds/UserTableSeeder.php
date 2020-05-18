@@ -14,9 +14,10 @@ class UserTableSeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
         User::truncate();
-        for($i = 0; $i < 1000; $i++) {
+        for($i = 0; $i < 21; $i++) {
+            $firstName = $faker->userName;
             User::create([
-                'username' => $faker->userName,
+                'username' => $firstName,
                 'email' => $faker->email,
                 'firstname' => $faker->firstName,
                 'lastname' => $faker->lastName,
@@ -25,7 +26,9 @@ class UserTableSeeder extends Seeder
                 'phonenumber' => $faker->numberBetween(99999999, 999999999),
                 'countrycode' => $faker->numberBetween(0, 99),
                 'bio' => $faker->paragraph,
-                'birthdate' => $faker->date()
+                'birthdate' => $faker->date(),
+                'img_small' => 'https://dummyimage.com/120x120/a12fa1/ededed.png&text=' . substr($firstName, 0, 1),
+                'img_medium' => 'https://dummyimage.com/250x250/a12fa1/ededed.png&text=' . substr($firstName, 0, 1)
                 ]);
         }
     }
