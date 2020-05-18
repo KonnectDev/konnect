@@ -3,16 +3,12 @@ import Api from "../utils/API";
 import SignUpContainer from "../components/register/SignUpContainer";
 
 
-class Register extends React.Component {
-
-    render() {
-        return (
-            <div>
-                <SignUpContainer />
-            </div>
-        );
-    }
-
+function Register() {
+    return (
+        <div className="App">
+            <h1>Register</h1>
+        </div>
+    );
 }
 
 export default Register;
