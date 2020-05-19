@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Gilda+Display);
 
 html {
-
+    background-color: #2f3136;
     color: black;
     overflow: hidden;
     height: 100%;
