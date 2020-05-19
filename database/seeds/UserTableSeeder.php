@@ -21,14 +21,15 @@ class UserTableSeeder extends Seeder
                 'email' => $faker->email,
                 'firstname' => $faker->firstName,
                 'lastname' => $faker->lastName,
-                'password' => $faker->md5,
+                'password' => md5($username),
                 'koins' => $faker->numberBetween(0, 99999),
                 'phonenumber' => $faker->numberBetween(99999999, 999999999),
                 'countrycode' => $faker->numberBetween(0, 99),
                 'bio' => $faker->paragraph,
                 'birthdate' => $faker->date(),
                 'img_small' => 'https://dummyimage.com/120x120/a12fa1/ededed.png&text=' . substr($username, 0, 1),
-                'img_medium' => 'https://dummyimage.com/250x250/a12fa1/ededed.png&text=' . substr($username, 0, 1)
+                'img_medium' => 'https://dummyimage.com/250x250/a12fa1/ededed.png&text=' . substr($username, 0, 1),
+                'auth_key' => md5(time())
                 ]);
         }
     }

@@ -14,7 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
         $this->call(UserTableSeeder::class);
         $users = User::all();
 
@@ -22,6 +21,8 @@ class DatabaseSeeder extends Seeder
         $faker = \Faker\Factory::create();
         $i = 0;
         $guild = '';
+        Guild::truncate();
+        GuildMember::truncate();
         foreach ($users as $user) {
             if ($i == 4) $i = 0;
 
