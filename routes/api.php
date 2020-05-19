@@ -2,9 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\User;
-use App\Guild;
-use App\GuildMember;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,18 +19,7 @@ use App\GuildMember;
 //    return $request->user();
 //});
 
-Route::get('user/{id}', function($id) {
-    return User::find($id);
-});
+Route::get('users', 'UserController@index');
+Route::get('users/{id}', 'UserController@show');
+Route::post('users/login', 'UserController@login');
 
-Route::get('users', function() {
-    return User::all();
-});
-
-Route::get('guilds', function() {
-    return Guild::all();
-});
-
-Route::get('guild/{id}', function($id) {
-    return Guild::find($id);
-});
