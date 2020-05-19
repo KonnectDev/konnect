@@ -8,13 +8,14 @@ class GuildTableSeeder extends Seeder
     /**
      * Run the database seeds.
      *
+     * @param $groupCount
      * @return void
      */
-    public function run()
+    public function run($groupCount)
     {
         $faker = \Faker\Factory::create();
 
-        for($i = 0; $i < 50; $i++) {
+        for($i = 0; $i < $groupCount; $i++) {
             Guild::create([
                 'name' => $faker->name,
                 'info' => $faker->text
