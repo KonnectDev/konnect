@@ -5,6 +5,7 @@ chdir(__DIR__);
 
     chdir('/var/www/html/');
     echo 'GIT fetch' . PHP_EOL;
+    echo shell_exec('git pull');
     echo shell_exec('git fetch --all');
     echo shell_exec('git reset --hard master');
     echo shell_exec('git checkout master');
