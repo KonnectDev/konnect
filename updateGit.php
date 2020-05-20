@@ -3,7 +3,7 @@
 chdir(__DIR__);
 
 
-    chdir('/opt/bitnami/apache2/htdocs/');
+    chdir('/var/www/html/');
     echo 'GIT fetch' . PHP_EOL;
 
     echo shell_exec('git fetch --all');
