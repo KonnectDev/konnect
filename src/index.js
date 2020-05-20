@@ -13,6 +13,8 @@ import routes from "./routes";
 import Error from "./404";
 
 
+console.log(localStorage);
+
 
 ReactDOM.render(
 
