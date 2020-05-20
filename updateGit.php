@@ -15,6 +15,6 @@ chdir(__DIR__);
     echo shell_exec('composer install');
     echo shell_exec('composer update');
     echo shell_exec('npm install');
-    //echo shell_exec('npm run build --modern');
+    echo shell_exec('react-scripts build');
 
 
