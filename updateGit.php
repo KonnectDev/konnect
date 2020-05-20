@@ -3,7 +3,7 @@
 chdir(__DIR__);
 
 
-    chdir('/var/www/html/');
+    chdir('/opt/bitnami/apache2/htdocs/');
     echo 'GIT fetch' . PHP_EOL;
 
     echo shell_exec('git fetch --all');
@@ -15,6 +15,6 @@ chdir(__DIR__);
     echo shell_exec('composer install');
     echo shell_exec('composer update');
     echo shell_exec('npm install');
-    echo shell_exec('react-scripts build');
+    echo shell_exec('npm build');
 
 
