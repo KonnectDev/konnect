@@ -2,11 +2,14 @@ import React, { Component } from "react";
 import { Link, withRouter} from "react-router-dom";
 import {
     FacebookLoginButton,
-    InstagramLoginButton
+    InstagramLoginButton,
+    GithubLoginButton
 } from "react-social-login-buttons";
 import { FingerprintSpinner } from 'react-epic-spinners';
 import {connect} from 'react-redux';
 import * as actions from '../../store/actions/auth';
+import GoogleButton from "../Buttons/GoogleButton";
+
 
 class SignInForm extends Component {
     constructor(props) {
@@ -36,11 +39,10 @@ class SignInForm extends Component {
     handleSubmit(event) {
         event.preventDefault();
 
-
+    console.log(this.state.username, this.state.password);
     this.props.onAuth(this.state.username, this.state.password );
-    this.props.history.push('/Dashboard');
 
-        window.location.reload()
+
     }
 
     render() {
@@ -51,6 +53,16 @@ class SignInForm extends Component {
                 <p>{this.props.error.message}</p>
             )
         }
+
+        const handleSocialLogin = (user) => {
+            console.log(user);
+            localStorage.setItem('google', user);
+            console.log(localStorage.getItem('google'));
+        };
+
+        const handleSocialLoginFailure = (err) => {
+            console.error(err)
+        };
         return (
             <div className="formCenter">
                 {errorMessage}
@@ -96,18 +108,21 @@ class SignInForm extends Component {
                         <div className="formField">
                             <button className="formFieldButton">Sign In</button>
                             {" "}
-                            <Link to="/SignUp" className="formFieldLink">
+                            <Link to="/sign-up" className="formFieldLink">
                                 Create an account
                             </Link>
                         </div>
 
                         <div className="socialMediaButtons">
-                            <div className="facebookButton">
-                                <FacebookLoginButton onClick={() => alert("Hello")}/>
-                            </div>
+                            <GoogleButton
+                            provider='google'
+                            appId='369908748740-g3hj2fio83blkddbha0pdg6a6l4okot0.apps.googleusercontent.com'
+                            onLoginSuccess={handleSocialLogin}
+                            onLoginFailure={handleSocialLoginFailure}
+                            />
 
                             <div className="instagramButton">
-                                <InstagramLoginButton onClick={() => alert("Hello")}/>
+                                <GithubLoginButton onClick={() => alert("Hello")}/>
                             </div>
                         </div>
                     </form>
@@ -128,7 +143,7 @@ const mapDispatchToProps = dispatch => {
     return {
         onAuth: (username, password) => dispatch(actions.authLogin(username, password))
     }
-}
+};
 
 
 

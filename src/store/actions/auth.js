@@ -28,7 +28,7 @@ export const logout = () => {
     return {
         type: actionTypes.AUTH_LOGOUT
     }
-}
+};
 
 export const checkAuthTimeout = expirationTime => {
     return dispatch => {
@@ -41,12 +41,12 @@ export const checkAuthTimeout = expirationTime => {
 export const authLogin = (username, password) => {
     return dispatch => {
         dispatch(authStart());
-        API.post('login/', {
+        API.post('users/login/', {
             username: username,
             password: password
         })
         .then(res => {
-            const token = res.data.key;
+            const token = res.data.auth_key;
             const expirationDate = new Date(new Date().getTime() + 86400 * 1000);
             localStorage.setItem('token', token);
             localStorage.setItem('expirationDate', expirationDate);
@@ -62,7 +62,7 @@ export const authLogin = (username, password) => {
 export const authSignup = (username, password, firstname, lastname, email, birthdate, phonenumber, countrycode) => {
     return dispatch => {
         dispatch(authStart());
-        API.post('registration/', {
+        API.post('users/register/', {
             username: username,
             password: password,
             firstname: firstname,

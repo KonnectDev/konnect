@@ -153,3 +153,107 @@
     top: 50%;
     transform: translateY(100%);
 }
+.formSelectLabel {
+    width: 85%;
+    background-color: #12130f;
+    border: none;
+    color: white;
+    outline: none;
+    border-bottom: 1px solid #445366;
+    font-size: 1em;
+    font-weight: 300;
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
+
+
+ /*************** SVG ******************/
+
+
+/*** desktop ***/
+
+.desktop-SGsog- {
+    left: 50%;
+    margin-left: -289.5px;
+}
+
+.svg-2pomhL {
+    bottom: 10px;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.svg-2pomhL {
+    position: absolute;
+}
+
+/*** android ***/
+
+.android-wLNUrB {
+    left: 50%;
+    margin-left: -548px;
+    z-index: 2;
+}
+
+.svg-2pomhL {
+    bottom: 10px;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.animation-1LiUTs, .spawnerBox-1hvka9, .svg-2pomhL {
+    position: absolute;
+}
+
+/*** iphone ***/
+
+.iphone-1cD00T {
+    left: 50%;
+    margin-left: -401.5px;
+}
+
+.svg-2pomhL {
+    bottom: 10px;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.svg-2pomhL {
+    position: absolute;
+}
+
+/*** iphone ***/
+
+.controller-13TeOK {
+    left: 50%;
+    margin-left: -255px;
+}
+
+.svg-2pomhL {
+    bottom: 10px;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.svg-2pomhL {
+    position: absolute;
+}
+
+/*** laptop ***/
+
+.laptop-Vea4OS {
+    left: 50%;
+    margin-left: -4px;
+}
+
+.svg-2pomhL {
+    bottom: 10px;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.svg-2pomhL {
+    position: absolute;
+}
+
+

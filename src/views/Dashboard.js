@@ -1,11 +1,14 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 class Dashboard extends React.Component {
     render() {
         return (
             <div>
                 <h1>Dashboard</h1>
-                <button>Logout</button>
+                <NavLink to="/">
+                    Logout
+                </NavLink>
             </div>
         );
     }
