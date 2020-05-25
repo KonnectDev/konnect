@@ -12,7 +12,7 @@
     echo shell_exec('git checkout master');
 
 //    echo 'Composer & NPM' . PHP_EOL;
-//    echo shell_exec('composer install');
+//    echo shell_exec('composer install --optimize-autoloader --no-dev');
 //    echo shell_exec('composer update');
 //    echo shell_exec('npm install');
 //    echo shell_exec('npm run-script build');
