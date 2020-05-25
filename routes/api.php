@@ -15,12 +15,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
 
+// api/users
 Route::get('users', 'UserController@index');
 Route::get('users/{id}', 'UserController@show');
-Route::post('users/login', 'UserController@login');
-Route::post('users/register', 'UserController@register');
 
+// api/user
+Route::post('user/login', 'UserController@login');
+Route::post('user/register', 'UserController@register');
+
+// api/user/friend
+Route::post('user/friend/add', 'UserFriendController@add');
+Route::post('user/friend/remove', 'UserFriendController@remove');
+Route::post('user/friend/request/accept', 'UserFriendController@accept');
+Route::post('user/friend/request/decline', 'UserFriendController@decline');
+
+// api/user/friends
+Route::get('user/friends', 'UserFriendController@friends');
+Route::get('user/friends/online', 'UserFriendController@friends(true)');
