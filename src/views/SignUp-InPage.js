@@ -1,16 +1,18 @@
 import React from "react";
-import { BrowserRouter as Router , Route, NavLink} from "react-router-dom";
+import {BrowserRouter as Router, Route, NavLink} from "react-router-dom";
 import SignInForm from "../components/SignUp-in/SignInForm";
 import SignUpForm from "../components/SignUp-in/SignUpForm";
 import '../assets/css/SignUp-In.css';
 import Dashboard from "./Dashboard";
 import RegistrationForm from "../components/SignUp-in/SignUpForm";
+import Appsvg from "../components/SignUp-in/Appsvg";
+
 class SignUpInPage extends React.Component {
     render() {
         return (
             <Router basename="/">
                 <div className="App">
-                    <div className="appAside" />
+                    <div className="appAside"/>
                     <div className="appForm">
                         <div className="pageSwitcher">
                             <NavLink

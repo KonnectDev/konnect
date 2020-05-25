@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import Countrycodeoptions from '../../utils/countrycode';
 import AsyncSelect from 'react-select/async';
 
@@ -16,6 +16,7 @@ class SignUpForm extends Component {
             username: "",
             hasAgreed: false,
             countrycode: null,
+            phonenumber: null,
         };
 
 
@@ -37,8 +38,12 @@ class SignUpForm extends Component {
     handleSubmit(e) {
         e.preventDefault();
 
+
+
         console.log("The form was submitted with the following data:");
         console.log(this.state);
+
+        this.props.onAuth(this.state.password, this.state.birthdate, this.state.firstname, this.state.lastname, this.state.username, this.state.countrycode, this.state.phonenumber, this.state.email);
     }
 
 
@@ -68,7 +73,7 @@ class SignUpForm extends Component {
 
         return (
             <div className="formCenter">
-                <form onSubmit={this.handleSubmit} className="formFields">
+                <form onSubmit={this.handleSubmit} className="formFields" autoComplete="new-password" autoCorrect="off" autoCapitalize="none" spellCheck="false">
                     <div className="formField">
                         <label className="formFieldLabel" htmlFor="username">
                             Username
@@ -163,7 +168,7 @@ class SignUpForm extends Component {
                         <label className="formFieldLabel" htmlFor="countrycode">
                             Countrycode
                         </label>
-                        <select value={this.state.Countrycode} onChange={this.handleChange} name="countrycode" id="countrycode">
+                        <select onChange={this.handleChange} name="countrycode" id="countrycode" className="formSelectLabel">
                             {Countrycodeoptions.map((country, index) => (
                                 <option value={country.value} label={country.label} />
                             ))}
@@ -178,7 +183,6 @@ class SignUpForm extends Component {
                                 type="checkbox"
                                 name="hasAgreed"
                                 value={this.state.hasAgreed}
-                                onChange={this.handleChange}
                                 required
                             />{" "}
                             I agree all statements in{" "}
@@ -187,7 +191,6 @@ class SignUpForm extends Component {
                             </a>
                         </label>
                     </div>
-
                     <div className="formField">
                         <button className="formFieldButton">Sign Up</button>{" "}
                         <Link to="/sign-in" className="formFieldLink">
@@ -199,4 +202,14 @@ class SignUpForm extends Component {
         );
     }
 }
+
+
+const MapStateToProps = (state) => {
+    return {
+        loading: false,
+        error: state.error
+    }
+};
+// this.props.onAuth(this.state.password, this.state.birthdate, this.state.firstname, this.state.lastname, this.state.username, this.state.countrycode, this.state.phonenumber, this.state.email)
+
 export default SignUpForm;

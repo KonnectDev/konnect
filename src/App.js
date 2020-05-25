@@ -32,6 +32,9 @@ class App extends React.Component {
                     <Route exact path="/sign-up">
                         <SignUpInPage />
                     </Route>
+                    <Route exact path="/Dashboard/test">
+                        <h1>test</h1>
+                    </Route>
                     <Route path="*">
                         <Error />
                     </Route>
