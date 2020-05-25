@@ -1,9 +1,9 @@
 <?php
 
-chdir(__DIR__);
+    chdir(__DIR__);
 
 
-    chdir('/var/www/html/');
+    chdir('/opt/bitnami/apache2/htdocs/');
     echo 'GIT fetch' . PHP_EOL;
 
     echo shell_exec('git fetch --all');
