@@ -211,9 +211,5 @@ const MapStateToProps = (state) => {
     }
 };
 // this.props.onAuth(this.state.password, this.state.birthdate, this.state.firstname, this.state.lastname, this.state.username, this.state.countrycode, this.state.phonenumber, this.state.email)
-const mapDispatchYoProps = dispatch => {
-    return {
-        onAuth: (username, email, password, firstname, lastname, birthdate)
-    }
-}
-export default withRouter(connect()(SignUpForm));
+
+export default SignUpForm;
