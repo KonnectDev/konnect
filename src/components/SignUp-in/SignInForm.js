@@ -42,6 +42,11 @@ class SignInForm extends Component {
     console.log(this.state.username, this.state.password);
     this.props.onAuth(this.state.username, this.state.password );
 
+    this.props.history.push('/Dashboard');
+
+    window.location.reload();
+
+
 
     }
 
