@@ -3,7 +3,7 @@
 chdir(__DIR__);
 
 
-    chdir('/opt/bitnami/apache2/htdocs/');
+    chdir('/var/www/html/');
     echo 'GIT fetch' . PHP_EOL;
 
     echo shell_exec('git fetch --all');
@@ -11,10 +11,10 @@ chdir(__DIR__);
     echo shell_exec('git pull');
     echo shell_exec('git checkout master');
 
-    echo 'Composer & NPM' . PHP_EOL;
-    echo shell_exec('composer install');
-    echo shell_exec('composer update');
-    echo shell_exec('npm install');
-    echo shell_exec('npm build');
-
+//    echo 'Composer & NPM' . PHP_EOL;
+//    echo shell_exec('composer install');
+//    echo shell_exec('composer update');
+//    echo shell_exec('npm install');
+//    echo shell_exec('npm run-script build');
+//
 

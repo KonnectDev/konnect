@@ -8,22 +8,36 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    public function index() {
+    public function index()
+    {
 
-        return User::all();
-
-    }
-    public function show($id) {
-
-        return User::find($id);
+        return User::all(['id', 'username', 'firstname', 'lastname', 'img_small'] );
 
     }
-    public function login(Request $request) {
+
+    public function show($id)
+    {
+
+        return User::find($id, ['username', 'firstname', 'lastname', 'img_medium', 'bio']);
+
+    }
+
+    public function login(Request $request)
+    {
 
         return DB::table('users')->where([
             'username' => $request['username'],
             'password' => md5($request['password'])
-        ])->get(['username', 'auth_key']);
+        ])->get(['id','username', 'auth_key']);
+
+    }
+
+    public function register(Request $request)
+    {
+        $request['auth_key'] = md5($request['username'] . time());
+
+        $user = User::create($request->all());
+        return response()->json($user, 201);
 
     }
 }
