@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import Countrycodeoptions from '../../utils/countrycode';
 import AsyncSelect from 'react-select/async';
 
@@ -16,6 +16,7 @@ class SignUpForm extends Component {
             username: "",
             hasAgreed: false,
             countrycode: null,
+            phonenumber: null,
         };
 
 
@@ -41,16 +42,11 @@ class SignUpForm extends Component {
 
         console.log("The form was submitted with the following data:");
         console.log(this.state);
+
+        this.props.onAuth(this.state.password, this.state.birthdate, this.state.firstname, this.state.lastname, this.state.username, this.state.countrycode, this.state.phonenumber, this.state.email);
     }
 
-// email: "",
-//             password: "",
-//             birthdate: null,
-//             firstname: "",
-//             lastname: "",
-//             username: "",
-//
-//             countrycode: null,
+
 
 
 
@@ -206,4 +202,18 @@ class SignUpForm extends Component {
         );
     }
 }
-export default SignUpForm;
+
+
+const MapStateToProps = (state) => {
+    return {
+        loading: false,
+        error: state.error
+    }
+};
+// this.props.onAuth(this.state.password, this.state.birthdate, this.state.firstname, this.state.lastname, this.state.username, this.state.countrycode, this.state.phonenumber, this.state.email)
+const mapDispatchYoProps = dispatch => {
+    return {
+        onAuth: (username, email, password, firstname, lastname, birthdate)
+    }
+}
+export default withRouter(connect()(SignUpForm));
