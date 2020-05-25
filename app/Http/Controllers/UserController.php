@@ -11,14 +11,14 @@ class UserController extends Controller
     public function index()
     {
 
-        return User::all();
+        return User::all(['id', 'username', 'firstname', 'lastname', 'img_small'] );
 
     }
 
     public function show($id)
     {
 
-        return User::find($id);
+        return User::find($id, ['username', 'firstname', 'lastname', 'img_medium', 'bio']);
 
     }
 
@@ -28,7 +28,7 @@ class UserController extends Controller
         return DB::table('users')->where([
             'username' => $request['username'],
             'password' => md5($request['password'])
-        ])->get(['username', 'auth_key']);
+        ])->get(['id','username', 'auth_key']);
 
     }
 
