@@ -35,7 +35,7 @@ class UserController extends Controller
     public function register(Request $request)
     {
         $request['auth_key'] = md5($request['username'] . time());
-
+        $request['password'] = md5($request['password']);
         $user = User::create($request->all());
         return response()->json($user, 201);
 

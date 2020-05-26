@@ -5,8 +5,10 @@
 }
 
 .appAside {
-    width: 50%;
+    width: 80%;
     background-color: #6b5b95;
+
+
 }
 
 .appForm {
@@ -170,11 +172,12 @@
  /*************** SVG ******************/
 
 
+
 /*** desktop ***/
 
 .desktop-SGsog- {
-    left: 50%;
-    margin-left: -289.5px;
+    left: 20%;
+
 }
 
 .svg-2pomhL {
@@ -190,8 +193,8 @@
 /*** android ***/
 
 .android-wLNUrB {
-    left: 50%;
-    margin-left: -548px;
+
+    left: 10%;
     z-index: 2;
 }
 
@@ -208,8 +211,8 @@
 /*** iphone ***/
 
 .iphone-1cD00T {
-    left: 50%;
-    margin-left: -401.5px;
+    left: 16%;
+
 }
 
 .svg-2pomhL {
@@ -225,8 +228,8 @@
 /*** iphone ***/
 
 .controller-13TeOK {
-    left: 50%;
-    margin-left: -255px;
+    left: 22%;
+
 }
 
 .svg-2pomhL {
@@ -242,12 +245,12 @@
 /*** laptop ***/
 
 .laptop-Vea4OS {
-    left: 50%;
-    margin-left: -4px;
+    left: 32%;
+
 }
 
 .svg-2pomhL {
-    bottom: 10px;
+    bottom: 30%;
     -webkit-transition: all .5s ease;
     transition: all .5s ease;
 }
@@ -255,5 +258,12 @@
 .svg-2pomhL {
     position: absolute;
 }
+
+.react-player {
+
+    top: 0;
+    left: 0;
+}
+
 
 

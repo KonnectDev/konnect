@@ -6,13 +6,26 @@ import '../assets/css/SignUp-In.css';
 import Dashboard from "./Dashboard";
 import RegistrationForm from "../components/SignUp-in/SignUpForm";
 import Appsvg from "../components/SignUp-in/Appsvg";
+import trailer from '../assets/video/trailer.mp4';
+import ReactPlayer from 'react-player';
+
 
 class SignUpInPage extends React.Component {
     render() {
         return (
             <Router basename="/">
                 <div className="App">
-                    <div className="appAside"/>
+
+                       <ReactPlayer
+                           className="react-player"
+                       url={trailer}
+                       playing={true}
+                       loop={true}
+                       volume={0}
+                       width='80%'
+                       height='100%'
+                       />
+
                     <div className="appForm">
                         <div className="pageSwitcher">
                             <NavLink
