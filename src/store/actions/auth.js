@@ -41,7 +41,7 @@ export const checkAuthTimeout = expirationTime => {
 export const authLogin = (username, password) => {
     return dispatch => {
         dispatch(authStart());
-        API.post('users/login/', {
+        API.post('user/login', {
             username: username,
             password: password
         })
@@ -62,7 +62,7 @@ export const authLogin = (username, password) => {
 export const authSignup = (username, password, firstname, lastname, email, birthdate, phonenumber, countrycode) => {
     return dispatch => {
         dispatch(authStart());
-        API.post('users/register/', {
+        API.post('user/register', {
             username: username,
             password: password,
             firstname: firstname,
@@ -71,20 +71,30 @@ export const authSignup = (username, password, firstname, lastname, email, birth
             birthdate: birthdate,
             phonenumber: phonenumber,
             countrycode: countrycode
+
         })
             .then(res => {
-                const token = res.data.key;
+                const token = res.data.auth_key;
                 const expirationDate = new Date(new Date().getTime() + 86400 * 1000);
                 localStorage.setItem('token', token);
                 localStorage.setItem('expirationDate', expirationDate);
                 dispatch(authSuccess(token));
                 dispatch(checkAuthTimeout(86400));
+                console.log(res.data);
+                console.log(res.status);
+                console.log(res.statusText);
+                console.log(res.headers);
+                console.log(res.config);
+
             })
             .catch(err => {
                 dispatch(authFail(err))
+                console.log(err)
             })
     }
 };
+
+
 
 export const authCheckState = () => {
     return dispatch => {

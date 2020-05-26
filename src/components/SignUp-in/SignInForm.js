@@ -3,12 +3,14 @@ import { Link, withRouter} from "react-router-dom";
 import {
     FacebookLoginButton,
     InstagramLoginButton,
-    GithubLoginButton
+    GithubLoginButton,
+    GoogleLoginButton
 } from "react-social-login-buttons";
 import { FingerprintSpinner } from 'react-epic-spinners';
 import {connect} from 'react-redux';
 import * as actions from '../../store/actions/auth';
 import GoogleButton from "../Buttons/GoogleButton";
+import {} from 'passport-steam';
 
 
 class SignInForm extends Component {
@@ -39,8 +41,8 @@ class SignInForm extends Component {
     handleSubmit(event) {
         event.preventDefault();
 
-    console.log(this.state.username, this.state.password);
     this.props.onAuth(this.state.username, this.state.password );
+
 
     this.props.history.push('/Dashboard');
 
@@ -49,6 +51,8 @@ class SignInForm extends Component {
 
 
     }
+
+
 
     render() {
 
@@ -59,15 +63,9 @@ class SignInForm extends Component {
             )
         }
 
-        const handleSocialLogin = (user) => {
-            console.log(user);
-            localStorage.setItem('google', user);
-            console.log(localStorage.getItem('google'));
-        };
 
-        const handleSocialLoginFailure = (err) => {
-            console.error(err)
-        };
+
+
         return (
             <div className="formCenter">
                 {errorMessage}
@@ -119,12 +117,7 @@ class SignInForm extends Component {
                         </div>
 
                         <div className="socialMediaButtons">
-                            <GoogleButton
-                            provider='google'
-                            appId='369908748740-g3hj2fio83blkddbha0pdg6a6l4okot0.apps.googleusercontent.com'
-                            onLoginSuccess={handleSocialLogin}
-                            onLoginFailure={handleSocialLoginFailure}
-                            />
+                            <GoogleLoginButton onClick={() => alert("Hello")} />
 
                             <div className="instagramButton">
                                 <GithubLoginButton onClick={() => alert("Hello")}/>

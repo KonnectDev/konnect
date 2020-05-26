@@ -12,7 +12,7 @@ class Homepage extends React.Component {
             <h1>Homepage</h1>
             {
                 this.props.isAuthenticated ?
-                    <button>Logout</button>
+                    <Link to="/Dashboard">Open</Link>
 
                 :
                     <Link to="/sign-in">Login</Link>
