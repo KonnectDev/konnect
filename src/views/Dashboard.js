@@ -3,6 +3,8 @@ import { Link, NavLink, withRouter } from "react-router-dom";
 import Navbar from '../components/Navbar/Navbar';
 import { connect } from "react-redux";
 import * as actions from '../store/actions/auth';
+import Sidebar from "../components/Sidebar/Sidebar";
+import '../assets/css/Dashboard.scss';
 
 
 
@@ -10,13 +12,15 @@ class Dashboard extends React.Component {
 
 
     render() {
+        console.log(localStorage.getItem("token"));
         return (
             <div>
-                <Navbar/>
-                <h1>Dashboard</h1>
-                <NavLink to="/sign-in" isActive={this.props.logout}>
+
+                <h1></h1>
+                <NavLink to="/sign-in" className="Logout">
                     Logout
                 </NavLink>
+                <Sidebar />
             </div>
         );
     }

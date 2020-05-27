@@ -1,6 +1,6 @@
 import React from 'react';
 import API from "../utils/API"
-import "../assets/css/Homepage.css"
+import "../assets/css/Homepage.scss"
 import { Link } from "react-router-dom";
 
 

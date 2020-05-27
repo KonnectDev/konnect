@@ -1,12 +1,13 @@
 import React from "react";
 import Konnectlogo from '../../assets/img/Konnect-logo.svg';
 import Konnectlogotext from '../../assets/img/Konnect-logo-text.svg';
-import '../../assets/css/LoginForm.css';
+import '../../assets/css/LoginRegisterForm.scss';
 import {FingerprintSpinner} from "react-epic-spinners";
 import {connect} from 'react-redux';
 import * as actions from '../../store/actions/auth';
-import {withRouter} from "react-router-dom";
+import {withRouter, Link} from "react-router-dom";
 import $ from 'jquery';
+import images from '../../utils/images';
 
 
 class LoginForm extends React.Component {
@@ -39,19 +40,16 @@ class LoginForm extends React.Component {
         this.props.onAuth(this.state.username, this.state.password);
 
         console.log(localStorage.getItem("token"))
+
+        this.props.history.push('/Dashboard')
+
+        window.location.reload()
     }
 
-    // componentDidMount() {
-    //     const images = [
-    //         'https://wallpapersite.com/images/pages/pic_w/1063.jpg',
-    //         'http://www.hdwallpaper.nu/wp-content/uploads/2017/04/PLAYERUNKNOWNS-BATTLEGROUNDS-12937710.jpg',
-    //         'https://images.alphacoders.com/186/186993.jpg',
-    //         'https://images4.alphacoders.com/602/thumb-1920-602788.png'
-    //
-    //     ];
-    //
-    //     $('#container').append('<style>#container, .acceptContainer:before, #logoContainer:before {background: url(' + images[Math.floor(Math.random() * images.length)] + ') center fixed }');
-    // }
+    componentDidMount() {
+
+        $('#container').append('<style>#container, .acceptContainer:before, #logoContainer:before {background: url(' + images[Math.floor(Math.random() * images.length)] + ') center fixed }');
+    }
 
 
     render() {
@@ -97,8 +95,6 @@ class LoginForm extends React.Component {
                                                 onChange={this.handleChange}
                                                 required
                                             />
-                                            <a className="forgotPas" href="#">FORGOT YOUR
-                                                PASSWORD</a>
                                         </div>
                                         <div className="formDiv">
                                             <p>PASSWORD</p>
@@ -115,7 +111,7 @@ class LoginForm extends React.Component {
                                         </div>
                                         <div className="formDiv">
                                             <button className="acceptBtn" type="submit">Login</button>
-                                            <span className="register">Need an account?<a href="#">Register</a></span>
+                                            <span className="register">Need an account?<Link to="/sign-up">Register</Link></span>
                                         </div>
                                     </div>
                                 </form>
