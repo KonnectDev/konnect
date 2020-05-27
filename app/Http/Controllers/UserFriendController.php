@@ -5,12 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
 class UserFriendController extends Controller
 {
+
     public function add(Request $request)
     {
-        //Request to add friend to user_friendrequests
-        // insert into user_friendrequests
+        if($this->verifyAuthKey($request['user_id'], $request['auth_key'])) {
+            //Request to add friend to user_friendrequests
+            // insert into user_friendrequests
+            return $this->parseResponse();
+        }
+        return $this->parseResponse();
     }
 
     public function remove(Request $request)
