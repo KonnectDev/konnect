@@ -6,8 +6,9 @@ import * as actions from './store/actions/auth';
 
 import Homepage from "./views/Homepage";
 import Dashboard from "./views/Dashboard";
-import SignUpInPage from "./views/SignUp-InPage";
+
 import LoginPage from "./views/LoginPage";
+import RegisterPage from "./views/RegisterPage";
 
 
 
@@ -31,7 +32,7 @@ class App extends React.Component {
                         <LoginPage {...this.props} />
                     </Route>
                     <Route exact path="/sign-up">
-                        <SignUpInPage />
+                        <RegisterPage {...this.props}/>
                     </Route>
                     <Route exact path="/Dashboard/test">
                         <h1>test</h1>
