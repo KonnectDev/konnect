@@ -96,13 +96,17 @@ class ReactSidebar extends React.Component {
 
     render() {
 
+        console.log(localStorage)
         return (
             <div>
             <Sidebar
                 docked={true}
                 styles={{ sidebar: { background: "#36393f"}}}
                 children={
-                    <h1>hoi</h1>
+                    <div>
+                        <h1>Welcome {localStorage.getItem('username')}</h1>
+                        <h1>auth_key: {localStorage.getItem('token')}</h1>
+                    </div>
                 }
                 sidebar={
 
