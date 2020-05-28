@@ -3,7 +3,7 @@ import { Link, NavLink, withRouter } from "react-router-dom";
 import Navbar from '../components/Navbar/Navbar';
 import { connect } from "react-redux";
 import * as actions from '../store/actions/auth';
-import Sidebar from "../components/Sidebar/Sidebar";
+import ReactSidebar from "../components/Sidebar/Sidebar";
 import '../assets/css/Dashboard.scss';
 
 
@@ -15,12 +15,7 @@ class Dashboard extends React.Component {
         console.log(localStorage.getItem("token"));
         return (
             <div>
-
-                <h1></h1>
-                <NavLink to="/sign-in" className="Logout">
-                    Logout
-                </NavLink>
-                <Sidebar />
+                <ReactSidebar />
             </div>
         );
     }
@@ -28,9 +23,7 @@ class Dashboard extends React.Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        logout: () => {
-            dispatch(actions.logout());
-        }
+
     }
 };
 
