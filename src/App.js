@@ -25,7 +25,6 @@ class App extends React.Component {
                     <Route exact path="/">
                         <Homepage {...this.props}/>
                     </Route>
-
                     <Route exact path="/Dashboard">
                         <Dashboard {...this.props} />
                     </Route>

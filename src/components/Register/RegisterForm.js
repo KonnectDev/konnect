@@ -40,9 +40,14 @@ class RegisterForm extends React.Component {
 
         this.props.onAuth(this.state.username, this.state.email, this.state.password);
 
-        this.props.history.push('/Dashboard')
+        {
 
-        window.location.reload()
+
+            this.props.history.push('/Dashboard')
+
+            window.location.reload()
+
+        }
     }
 
     componentDidMount() {

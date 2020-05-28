@@ -15,17 +15,13 @@ class Dashboard extends React.Component {
         console.log(localStorage.getItem("token"));
         return (
             <div>
-                <ReactSidebar />
+                <ReactSidebar {...this.props}/>
             </div>
         );
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
 
-    }
-};
 
-export default withRouter(connect(null, mapDispatchToProps)(Dashboard));
+export default withRouter(connect(null, null)(Dashboard));
 

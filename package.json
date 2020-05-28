@@ -5,13 +5,9 @@
     "name": "konnect",
     "description": "konnect is a social-media platform for gamers",
     "author": "KonnectDev",
-    "main": "public/electron.js",
+    "main": "src/start.js",
     "build": {
         "appId": "konnect",
-        "files": [
-            "build/**/*",
-            "node_modules/**/*"
-        ],
         "directories": {
             "buildResources": "assets"
         }
@@ -37,6 +33,7 @@
         "@testing-library/jest-dom": "^4.2.4",
         "@testing-library/react": "^9.3.2",
         "@testing-library/user-event": "^7.1.2",
+        "@trodi/electron-splashscreen": "^1.0.0",
         "antd": "^4.2.4",
         "axios": "^0.19.2",
         "bootstrap": "^4.4.1",
@@ -78,6 +75,7 @@
     "devDependencies": {
         "axios": "^0.19",
         "cross-env": "^7.0",
+        "electron": "^9.0.0",
         "electron-builder": "^22.6.1",
         "electron-reload": "^1.5.0",
         "laravel-mix": "^5.0.1",
