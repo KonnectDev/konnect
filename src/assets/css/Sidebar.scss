@@ -52,3 +52,15 @@
     margin: 1rem;
     padding: 1ch;
 }
+
+.body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.sidebar {
+    width: 25ch;
+    height: 100vh;
+    background-color: #6b5b95;
+}

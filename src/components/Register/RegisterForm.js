@@ -82,7 +82,7 @@ class RegisterForm extends React.Component {
                                 className="text" src={Konnectlogotext}/></div>
                             <div className="acceptContainer">
                                 <form onSubmit={this.handleSubmit}>
-                                    <h1>WELCOME BACK!</h1>
+                                    <h1>WELCOME!</h1>
                                     <div className="formContainer">
                                         <div className="formDiv">
                                             <p>USERNAME</p>
