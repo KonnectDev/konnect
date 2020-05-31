@@ -1,0 +1,28 @@
+.Logout {
+    color: white;
+}
+
+.sidebar {
+    overflow: hidden;
+
+}
+
+.sidebar > * {
+    display: flex;
+    flex-wrap: wrap;
+    margin: calc(var(--s1) / 2 * -1);
+}
+
+.sidebar > * > * {
+    margin: calc(var(--s1) / 2);
+    flex-basis: 25ch;
+    flex-grow: 1;
+}
+
+.sidebar > * > :last-child {
+    flex-basis: 0;
+    flex-grow: 999;
+    min-width: calc(50% - var(--s1));
+}
+
+

@@ -1,0 +1,66 @@
+@import '~material-design-icons/iconfont/material-icons.css';
+
+.root {
+    width: 25ch;
+    max-width: 25ch;
+    background-color: #36393f;
+}
+.h1 {
+    width: 25ch;
+    background-color: #36393f;
+}
+
+.inline {
+    display: inline;
+}
+
+
+.Search {
+    width: 25ch;
+    margin-top: 3ch;
+}
+
+.Search-box {
+    font-size: 1.0rem;
+    border: none;
+    border-bottom: 1px solid #36393F;
+    background: inherit;
+    outline: none;
+    color: white;
+    width: 23ch;
+
+}
+
+.Search-box::placeholder {
+    color: lightgrey;
+}
+
+.Online {
+    width: 25ch;
+    background-color: #454951;
+    height: 5ch;
+    text-align: center;
+    padding: 1px;
+}
+
+.Invite {
+    width: 22ch;
+    background-color: #454951;
+    height: 5ch;
+    text-align: center;
+    float: right;
+    margin: 1rem;
+    padding: 1ch;
+}
+
+.body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.sidebar {
+    width: 25ch;
+    height: 100vh;
+    background-color: #6b5b95;
+}

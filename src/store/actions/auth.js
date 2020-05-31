@@ -47,11 +47,15 @@ export const authLogin = (username, password) => {
         })
         .then(res => {
             const token = res.data[0].auth_key;
-            const id = res.data[0].auth_key;
+            const id = res.data[0].id;
+            const username = res.data[0].username;
+
+            console.log(token, id, username);
             const expirationDate = new Date(new Date().getTime() + 86400 * 1000);
             localStorage.setItem('token', token);
             localStorage.setItem('expirationDate', expirationDate);
             localStorage.setItem('id', id);
+            localStorage.setItem('username', username);
             dispatch(authSuccess(token));
             dispatch(checkAuthTimeout(86400));
         })
@@ -61,36 +65,26 @@ export const authLogin = (username, password) => {
     }
 };
 
-export const authSignup = (username, password, firstname, lastname, email, birthdate, phonenumber, countrycode) => {
+export const authSignup = (username, password, email) => {
     return dispatch => {
         dispatch(authStart());
         API.post('user/register', {
             username: username,
             password: password,
-            firstname: firstname,
-            lastname: lastname,
             email: email,
-            birthdate: birthdate,
-            phonenumber: phonenumber,
-            countrycode: countrycode
-
         })
             .then(res => {
-                const token = res.data.auth_key;
+                const token = res.data[0].auth_key;
+                const id = res.data[0].id;
                 const expirationDate = new Date(new Date().getTime() + 86400 * 1000);
                 localStorage.setItem('token', token);
                 localStorage.setItem('expirationDate', expirationDate);
+                localStorage.setItem('id', id);
                 dispatch(authSuccess(token));
                 dispatch(checkAuthTimeout(86400));
-                console.log(res.data);
-                console.log(res.status);
-                console.log(res.statusText);
-                console.log(res.headers);
-                console.log(res.config);
-
             })
             .catch(err => {
-                dispatch(authFail(err))
+                dispatch(authFail(err));
                 console.log(err)
             })
     }
