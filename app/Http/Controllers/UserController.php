@@ -21,6 +21,15 @@ class UserController extends Controller
         return User::find($id, ['username', 'firstname', 'lastname', 'img_medium', 'bio']);
 
     }
+    public function showDetailed($id, $string)
+    {
+        if(in_array($string, ['username', 'firstname', 'lastname', 'img_medium', 'bio'])) {
+            return User::find($id, [$string]);
+        }
+        return User::find($id, ['username', 'firstname', 'lastname', 'img_medium', 'bio']);
+
+    }
+
 
     public function login(Request $request)
     {

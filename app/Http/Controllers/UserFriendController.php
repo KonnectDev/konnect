@@ -38,9 +38,16 @@ class UserFriendController extends Controller
         // delete friendrequest
     }
 
-    public function friends($online = false)
+    public function friends($show = 'all')
     {
         //Get all user friends
-        // if online = true only online user friends.
+        // if show = 'online'
+        // if show = 'offline'
+    }
+    public function userFriends($id, $show = 'all')
+    {
+        //Get all user friends by id
+        // if show = 'online'
+        // if show = 'offline'
     }
 }

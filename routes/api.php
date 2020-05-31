@@ -21,6 +21,7 @@ Route::get('users', 'UserController@index');
 
 // api/user
 Route::get('user/{id}', 'UserController@show');
+Route::post('user/{id}/{string}', 'UserController@showDetailed');
 Route::post('user/login', 'UserController@login');
 Route::post('user/register', 'UserController@register');
 
@@ -31,5 +32,6 @@ Route::post('user/friend/request/accept', 'UserFriendController@accept');
 Route::post('user/friend/request/decline', 'UserFriendController@decline');
 
 // api/user/friends
-Route::get('user/friends', 'UserFriendController@friends');
-Route::get('user/friends/online', 'UserFriendController@friends(true)');
+Route::post('user/friends/{id}', 'UserFriendController@userFriends');
+Route::post('user/friends', 'UserFriendController@friends');
+Route::post('user/friends/{string}', 'UserFriendController@friends');
