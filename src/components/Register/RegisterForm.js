@@ -42,10 +42,13 @@ class RegisterForm extends React.Component {
 
         {
 
+            if(this.state.token !== null){
+                this.props.history.push('/Dashboard')
 
-            this.props.history.push('/Dashboard')
-
-            window.location.reload()
+                window.location.reload()
+            } else {
+                console.log("error")
+            }
 
         }
     }

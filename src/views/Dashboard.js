@@ -9,6 +9,8 @@ import Feed from "./Feed";
 import Leaderboard from "./Leaderboard";
 import Error from "../404";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Box, Flex } from 'rebass'
+
 
 
 
@@ -23,14 +25,16 @@ class Dashboard extends React.Component {
                 <NavigationBar />
 
                 <Sidebar />
-
+                <div className={"content"}>
                 <Switch>
                     <Route exact path="/Dashboard/" component={Feed} {...this.props}/>
                     <Route exact path="/Dashboard/Leaderboard/" component={Leaderboard} />
                     <Route component={Error}/>
                 </Switch>
+                </div>
             </Router>
-        );
+
+        )
     }
 }
 

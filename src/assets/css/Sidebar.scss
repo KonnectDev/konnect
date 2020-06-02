@@ -3,7 +3,7 @@
 .root {
     width: 25ch;
     max-width: 25ch;
-    background-color: #36393f;
+    background-color: #2F3136;
 }
 .h1 {
     width: 25ch;
@@ -26,13 +26,13 @@
     border-bottom: 1px solid #36393F;
     background: inherit;
     outline: none;
-    color: white;
+    color: #dcddde;
     width: 23ch;
 
 }
 
 .Search-box::placeholder {
-    color: lightgrey;
+    color: #dcddde;
 }
 
 .Online {
@@ -53,7 +53,58 @@
     margin-top: 20px;
 }
 
+//normal
+.sidebar {
+    position: fixed; /* Fixed Sidebar (stay in place on scroll and position relative to viewport) */
+    height: 100vh;
+    width: 12vw; /* Set the width of the sidebar */
+    z-index: 0; /* Stay on top of everything */
+    top: 3.4em; /* Stay at the top */
+    background-color: #222; /* Black */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 10px;
+    color: white;
+}
 
+// 720p
+
+@media screen and (max-width: 1280px){
+    .sidebar {
+        width: 16vw; /* Set the width of the sidebar */
+    }
+}
+
+// half 720p
+
+@media screen and (max-width: 640px){
+    .sidebar {
+        width: 30vw; /* Set the width of the sidebar */
+    }
+}
+
+// 1080p
+
+@media screen and (max-width: 1920px){
+    .sidebar {
+        width: 15vw; /* Set the width of the sidebar */
+    }
+}
+
+// half 1080p
+
+@media screen and (max-width: 960px){
+    .sidebar {
+        width: 25vw; /* Set the width of the sidebar */
+    }
+}
+
+// 1440
+
+@media screen and (max-width: 1920px){
+    .sidebar {
+        width: 15vw; /* Set the width of the sidebar */
+    }
+}
 
 
 
