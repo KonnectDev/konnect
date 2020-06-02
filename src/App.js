@@ -9,6 +9,7 @@ import Dashboard from "./views/Dashboard";
 
 import LoginPage from "./views/LoginPage";
 import RegisterPage from "./views/RegisterPage";
+import Leaderboard from "./views/Leaderboard";
 
 
 
@@ -25,17 +26,17 @@ class App extends React.Component {
                     <Route exact path="/">
                         <Homepage {...this.props}/>
                     </Route>
-                    <Route exact path="/Dashboard">
-                        <Dashboard {...this.props} />
-                    </Route>
                     <Route exact path="/sign-in">
                         <LoginPage {...this.props} />
                     </Route>
                     <Route exact path="/sign-up">
                         <RegisterPage {...this.props}/>
                     </Route>
-                    <Route exact path="/Dashboard/test">
-                        <h1>test</h1>
+                    <Route exact path="/Dashboard">
+                        <Dashboard {...this.props} />
+                    </Route>
+                    <Route exact path="/Dashboard/leaderboard">
+                        <Leaderboard {...this.props}/>
                     </Route>
                     <Route path="*">
                         <Error />

@@ -36,31 +36,25 @@
 }
 
 .Online {
-    width: 25ch;
+    width: 100%;
     background-color: #454951;
-    height: 5ch;
+    height: 38px;
     text-align: center;
     padding: 1px;
 }
 
 .Invite {
-    width: 22ch;
+    width: 100%;
     background-color: #454951;
-    height: 5ch;
+    height: 44px;
     text-align: center;
     float: right;
-    margin: 1rem;
     padding: 1ch;
+    margin-top: 20px;
 }
 
-.body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-}
 
-.sidebar {
-    width: 25ch;
-    height: 100vh;
-    background-color: #6b5b95;
-}
+
+
+
+

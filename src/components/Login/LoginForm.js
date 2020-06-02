@@ -75,7 +75,7 @@ class LoginForm extends React.Component {
 
             <div id="container">
 
-                {errorMessage}
+
                 {
 
                     this.props.loading ?
@@ -118,6 +118,7 @@ class LoginForm extends React.Component {
                                         <div className="formDiv">
                                             <button className="acceptBtn" type="submit">Login</button>
                                             <span className="register">Need an account?<Link to="/sign-up">Register</Link></span>
+                                            {errorMessage}
                                         </div>
                                     </div>
                                 </form>

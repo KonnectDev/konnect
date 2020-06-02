@@ -1,7 +1,6 @@
 import React from "react";
 import Homepage from "./views/Homepage";
 import Dashboard from "./views/Dashboard";
-import SignUpInPage from "./views/SignUp-InPage";
 import RegisterPage from "./views/RegisterPage";
 
 
@@ -25,10 +24,6 @@ const routes = [
         path: "/register",
         component: RegisterPage,
     },
-    {
-        path: "/login",
-        component: SignUpInPage,
-    }
 
 
 ];
