@@ -1,11 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
-import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
-import API from "../../utils/API";
-import add from "../../assets/img/person_add.svg";
+import List from '@material-ui/core/List';
+import API from '../../utils/API';
+import '../../assets/css/Sidebar.scss';
+import {ListitemFriend , ListitemGuild} from "./Listitem";
 import Search from "./Search";
-import {ListitemFriend, ListitemGuild} from "./Listitem";
-import List from "@material-ui/core/List";
+import add from "../../assets/img/person_add.svg"
+import Sidebar from "react-sidebar";
+import Navbar from "../Navbar/Navbar";
 
 
 const Friends = [
@@ -55,20 +56,8 @@ const Guild = [
 
 ]
 
-const StyledSideNav = styled.div`
-    position: fixed;     /* Fixed Sidebar (stay in place on scroll and position relative to viewport) */
-    height: 100%;
-    width: 200px;     /* Set the width of the sidebar */
-    z-index: 0;      /* Stay on top of everything */
-    top: 3.4em;      /* Stay at the top */
-    background-color: #222; /* Black */
-    overflow-x: hidden;     /* Disable horizontal scroll */
-    padding-top: 10px;
-    color: white;
-`;
 
-export default class Sidebar extends React.Component {
-
+class ReactSidebar extends React.Component {
     constructor(props) {
         super(props);
 
@@ -107,11 +96,23 @@ export default class Sidebar extends React.Component {
 
 
     render() {
+
         return (
-            <StyledSideNav>
-                <div>
-                    <List>
+            <div>
+            <Sidebar
+                docked={true}
+                styles={{ sidebar: { background: "#36393f"}}}
+                children={
+                   <Navbar/>
+                }
+                sidebar={
+
+
+                    <List className={"root"}>
                         <div className="Online"><p>Friends Online ({this.state.friends.length})</p></div>
+                        <div>
+                            <button><img src={add}/></button>
+                        </div>
                         <p className="Invite">Invite</p>
                         <Search searchText={this.searchText}/>
                         {
@@ -142,8 +143,14 @@ export default class Sidebar extends React.Component {
                                 ))
                         }
                     </List>
-                </div>
-            </StyledSideNav>
+
+            }/>
+
+            </div>
         );
     }
 }
+
+export default ReactSidebar;
+
+
