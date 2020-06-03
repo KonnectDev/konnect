@@ -6,7 +6,7 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import '../../assets/css/Sidebar.scss';
-import {makeStyles} from "@material-ui/core/styles";
+
 
 
 
@@ -21,7 +21,7 @@ class ListitemFriend extends React.Component {
                     <Avatar alt={this.props.alt} src={this.props.src} variant="square"/>
                 </ListItemAvatar>
                 <ListItemText
-                    style={{color: "white"}}
+                    style={{color: "#dcddde"}}
                     primary={this.props.username}
                     secondary={
                         <React.Fragment>
@@ -29,7 +29,7 @@ class ListitemFriend extends React.Component {
                                 component="span"
                                 variant="body2"
                                 className={"inline"}
-                                style={{color: "white"}}
+                                style={{color: "#dcddde"}}
                             >
                                 Level {this.props.level}
                             </Typography>
@@ -37,7 +37,6 @@ class ListitemFriend extends React.Component {
                     }
                 />
             </ListItem>
-                <Divider variant="inset" component="li" color="white" classes={{root: {backgroundColor: 'white'}}}/>
             </React.Fragment>
         );
     }
@@ -53,6 +52,7 @@ class ListitemGuild extends React.Component {
                         <Avatar alt={this.props.alt} src={this.props.src} variant="square"/>
                     </ListItemAvatar>
                     <ListItemText
+                        style={{color: "#dcddde"}}
                         primary={this.props.username}
                         secondary={
                             <React.Fragment>
@@ -60,7 +60,7 @@ class ListitemGuild extends React.Component {
                                     component="span"
                                     variant="body2"
                                     className={"inline"}
-                                    color="textPrimary"
+                                    style={{color: "#dcddde"}}
                                 >
                                     Rank {this.props.rank}
                                 </Typography>
@@ -68,7 +68,6 @@ class ListitemGuild extends React.Component {
                         }
                     />
                 </ListItem>
-                <Divider variant="inset" component="li"/>
             </React.Fragment>
         );
     }

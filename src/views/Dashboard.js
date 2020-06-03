@@ -12,25 +12,30 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
+
+
 class Dashboard extends React.Component {
 
 
 
     render() {
         console.log(localStorage.getItem("token"));
+        console.log(localStorage.getItem("id"));
         return (
             <Router>
                 <NavigationBar />
 
                 <Sidebar />
-
+                <div className={"content"}>
                 <Switch>
                     <Route exact path="/Dashboard/" component={Feed} {...this.props}/>
                     <Route exact path="/Dashboard/Leaderboard/" component={Leaderboard} />
                     <Route component={Error}/>
                 </Switch>
+                </div>
             </Router>
-        );
+
+        )
     }
 }
 

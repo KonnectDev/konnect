@@ -39,16 +39,17 @@ class LoginForm extends React.Component {
 
         this.props.onAuth(this.state.username, this.state.password);
 
-        if(this.state.token !== null){
-            this.props.history.push('/Dashboard')
+        const token = localStorage.getItem("token");
+        const id = localStorage.getItem("id");
+        const username = localStorage.getItem("username");
 
-            window.location.reload()
-        } else {
-            console.log("error")
+
+        if (token && id && username === null){
+            console.log("error");
         }
-
-
-
+        else {
+            this.props.history.push("/Dashboard");
+        }
 
     }
 
