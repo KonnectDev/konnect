@@ -1,37 +1,36 @@
 import React from 'react';
-import List from '@material-ui/core/List';
-import API from '../../utils/API';
-import '../../assets/css/Sidebar.scss';
-import {ListitemFriend , ListitemGuild} from "./Listitem";
+import styled from 'styled-components';
+import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
+import API from "../../utils/API";
+import add from "../../assets/img/person_add.svg";
 import Search from "./Search";
-import add from "../../assets/img/person_add.svg"
-import Sidebar from "react-sidebar";
-import Navbar from "../Navbar/Navbar";
+import {ListitemFriend, ListitemGuild} from "./Listitem";
+import List from "@material-ui/core/List";
+import SearchGuild from "./SearchGuild";
 
 
 const Friends = [
     {
-        key: "Henk",
-        value: "Henk",
         username: "Henk",
-        image: "https://unsplash.com/s/photos/person",
+        image: "https://picsum.photos/200/300",
         level: 10
     },
     {
         username: "Jan",
-        image: "https://unsplash.com/s/photos/person/",
+        image: "https://picsum.photos/200/300",
         level: 58
     },
     {
         username: "Peter",
-        image: "https://unsplash.com/s/photos/person",
+        image: "https://picsum.photos/200/300",
         level: 560
     },
     {
         username: "Sandra",
-        image: "https://unsplash.com/s/photos/person/",
+        image: "https://picsum.photos/200/300",
         level: 1
     },
+
 
 ];
 
@@ -40,24 +39,28 @@ const Guild = [
     {
 
         username: "Superstars",
-        image: "https://unsplash.com/s/photos/person",
+        image: "https://picsum.photos/200/300",
         rank: 25
     },
     {
         username: "Idk",
-        image: "https://unsplash.com/s/photos/person/",
+        image: "https://picsum.photos/200/300",
         rank: 45
     },
     {
         username: "JumpSquad",
-        image: "https://unsplash.com/s/photos/person",
+        image: "https://picsum.photos/200/300",
         rank: 89
-    }
+    },
 
-]
+    ]
 
+const StyledSideNav = styled.div`
 
-class ReactSidebar extends React.Component {
+`;
+
+export default class Sidebar extends React.Component {
+
     constructor(props) {
         super(props);
 
@@ -65,6 +68,7 @@ class ReactSidebar extends React.Component {
             friends: [],
             guild: [],
             searchText: '',
+            searchGuild: '',
         };
 
     }
@@ -77,8 +81,10 @@ class ReactSidebar extends React.Component {
         this.setState({friends: Friends});
         this.setState({guild: Guild});
 
+        const id = localStorage.getItem("id");
+
         API
-            .get("")
+            .get(`user/friend/${id}`)
             .then(response => {
                 console.log(response);
                 this.setState({friends: response.data});
@@ -94,27 +100,18 @@ class ReactSidebar extends React.Component {
         this.setState({searchText: res});
     };
 
+    searchGuild = res => {
+        this.setState({searchGuild: res});
+    };
+
 
     render() {
-
         return (
-            <div>
-            <Sidebar
-                docked={true}
-                styles={{ sidebar: { background: "#36393f"}}}
-                children={
-                   <Navbar/>
-                }
-                sidebar={
-
-
-                    <List className={"root"}>
+                <div className={"sidebar"}>
                         <div className="Online"><p>Friends Online ({this.state.friends.length})</p></div>
-                        <div>
-                            <button><img src={add}/></button>
-                        </div>
                         <p className="Invite">Invite</p>
                         <Search searchText={this.searchText}/>
+                    <List>
                         {
 
                             this.state.friends.filter(friend => (friend.username.toLowerCase().includes(this.state.searchText.toLowerCase())))
@@ -127,12 +124,14 @@ class ReactSidebar extends React.Component {
                                     />
                                 ))
                         }
+                    </List>
 
                         <div className="Online"><p>Guild Members ({this.state.guild.length})</p></div>
-                        <Search searchText={this.searchText}/>
+                        <Search searchText={this.searchGuild}/>
+                        <List>
                         {
 
-                            this.state.guild.filter(guild => (guild.username.toLowerCase().includes(this.state.searchText.toLowerCase())))
+                            this.state.guild.filter(guild => (guild.username.toLowerCase().includes(this.state.searchGuild.toLowerCase())))
                                 .map((guild, index) => (
                                     <ListitemGuild
                                         alt={guild.username}
@@ -143,14 +142,8 @@ class ReactSidebar extends React.Component {
                                 ))
                         }
                     </List>
+                </div>
 
-            }/>
-
-            </div>
         );
     }
 }
-
-export default ReactSidebar;
-
-

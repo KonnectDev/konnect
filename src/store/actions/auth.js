@@ -53,7 +53,6 @@ export const authLogin = (username, password) => {
             const id = res.data[0].id;
             const username = res.data[0].username;
 
-            console.log(token, id, username);
             const expirationDate = new Date(new Date().getTime() + 86400 * 1000);
             localStorage.setItem('token', token);
             localStorage.setItem('expirationDate', expirationDate);
@@ -65,7 +64,9 @@ export const authLogin = (username, password) => {
             .catch(err => {
                 dispatch(authFail(err))
             })
+
     }
+
 };
 
 export const authSignup = (username, password, email) => {
@@ -83,6 +84,7 @@ export const authSignup = (username, password, email) => {
                 localStorage.setItem('token', token);
                 localStorage.setItem('expirationDate', expirationDate);
                 localStorage.setItem('id', id);
+                localStorage.setItem('username', username);
                 dispatch(authSuccess(token));
                 dispatch(checkAuthTimeout(86400));
             })
