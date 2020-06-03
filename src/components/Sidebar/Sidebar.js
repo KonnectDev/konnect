@@ -81,8 +81,10 @@ export default class Sidebar extends React.Component {
         this.setState({friends: Friends});
         this.setState({guild: Guild});
 
+        const id = localStorage.getItem("id");
+
         API
-            .get("")
+            .get(`user/friend/${id}`)
             .then(response => {
                 console.log(response);
                 this.setState({friends: response.data});
