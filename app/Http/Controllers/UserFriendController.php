@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\UserFriendRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,24 +13,26 @@ class UserFriendController extends Controller
     public function add(Request $request)
     {
         if($this->verifyAuthKey($request['user_id'], $request['auth_key'])) {
-            //Request to add friend to user_friendrequests
-            // insert into user_friendrequests
-            return $this->parseResponse();
+            $friendRequest = new UserFriendRequest();
+            $friendRequest->user_id = $request['user_id'];
+            $friendRequest->friend_id = $request['friend_id'];
+            $friendRequest->save();
         }
-        return $this->parseResponse();
+        return 'invalid';
     }
 
     public function remove(Request $request)
     {
-        //Remove a friend from user_friendships
-        // delete user_friendship
+        if($this->verifyAuthKey($request['user_id'], $request['auth_key'])) {
+            $friendRequest = UserFriendRequest::where('user_id', $request['user_id'])->first();
+            $friendRequest->delete();
+        }
+        return 'invalid';
     }
 
     public function accept(Request $request)
     {
-        //Accept friendship request
-        // delete friendrequest
-        // insert into user_friendships
+
     }
 
     public function decline(Request $request)

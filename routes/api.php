@@ -28,7 +28,7 @@ Route::post('user/register', 'UserController@register');
 // api/user/friend
 Route::post('user/friend/add', 'UserFriendController@add');
 Route::post('user/friend/remove', 'UserFriendController@remove');
-Route::post('user/friend/request/accept', 'UserFriendController@accept');
+Route::get('user/friend/request/accept', 'UserFriendController@accept');
 Route::post('user/friend/request/decline', 'UserFriendController@decline');
 
 // api/user/friends
