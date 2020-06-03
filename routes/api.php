@@ -17,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 
 // api/users
-Route::get('users', 'UserController@index');
+Route::post('users', 'UserController@index');
 
 // api/user
-Route::get('user/{id}', 'UserController@show');
+Route::post('user/{id}', 'UserController@show');
 Route::post('user/{id}/{string}', 'UserController@showDetailed');
 Route::post('user/login', 'UserController@login');
 Route::post('user/register', 'UserController@register');
