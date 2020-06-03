@@ -37,7 +37,6 @@ class ListitemFriend extends React.Component {
                     }
                 />
             </ListItem>
-                <Divider variant="inset" component="li" color="white" style={{backgroundColor: "#3e3b3b", marginLeft: "0px"}}/>
             </React.Fragment>
         );
     }
@@ -69,7 +68,6 @@ class ListitemGuild extends React.Component {
                         }
                     />
                 </ListItem>
-                <Divider variant="inset" component="li" style={{backgroundColor: "#3e3b3b", marginLeft: "0px"}}/>
             </React.Fragment>
         );
     }

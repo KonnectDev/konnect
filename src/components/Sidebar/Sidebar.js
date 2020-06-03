@@ -11,25 +11,23 @@ import SearchGuild from "./SearchGuild";
 
 const Friends = [
     {
-        key: "Henk",
-        value: "Henk",
         username: "Henk",
-        image: "https://unsplash.com/s/photos/person",
+        image: "https://picsum.photos/200/300",
         level: 10
     },
     {
         username: "Jan",
-        image: "https://unsplash.com/s/photos/person/",
+        image: "https://picsum.photos/200/300",
         level: 58
     },
     {
         username: "Peter",
-        image: "https://unsplash.com/s/photos/person",
+        image: "https://picsum.photos/200/300",
         level: 560
     },
     {
         username: "Sandra",
-        image: "https://unsplash.com/s/photos/person/",
+        image: "https://picsum.photos/200/300",
         level: 1
     },
 
@@ -41,17 +39,17 @@ const Guild = [
     {
 
         username: "Superstars",
-        image: "https://unsplash.com/s/photos/person",
+        image: "https://picsum.photos/200/300",
         rank: 25
     },
     {
         username: "Idk",
-        image: "https://unsplash.com/s/photos/person/",
+        image: "https://picsum.photos/200/300",
         rank: 45
     },
     {
         username: "JumpSquad",
-        image: "https://unsplash.com/s/photos/person",
+        image: "https://picsum.photos/200/300",
         rank: 89
     },
 

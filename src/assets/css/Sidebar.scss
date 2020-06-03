@@ -48,7 +48,6 @@
     background-color: #454951;
     height: 44px;
     text-align: center;
-    float: right;
     padding: 1ch;
     margin-top: 20px;
 }
@@ -60,10 +59,10 @@
     width: 12vw; /* Set the width of the sidebar */
     z-index: 0; /* Stay on top of everything */
     top: 3.4em; /* Stay at the top */
-    background-color: #222; /* Black */
+    background-color: #36393f; /* Black */
     overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 10px;
     color: white;
+    margin-top: 4px;
 }
 
 // 720p

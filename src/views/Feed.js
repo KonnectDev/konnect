@@ -6,7 +6,7 @@ import '../assets/css/Feed.scss';
 class Feed extends React.Component {
     render() {
         return (
-            <div>
+            <div className="Feed">
                 <p>This is a paragraph and I am writing on the home page</p>
                 <p>This is another paragraph, hi hey hello whatsup yo</p>
                 <p>token: {localStorage.getItem("token")}</p>

@@ -9,7 +9,7 @@ import Feed from "./Feed";
 import Leaderboard from "./Leaderboard";
 import Error from "../404";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Box, Flex } from 'rebass'
+
 
 
 
