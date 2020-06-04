@@ -71,6 +71,13 @@ class UserFriendController extends Controller
 
     public function friends($show = 'all')
     {
+    if($show == 'online') {
+
+    } else if($show == 'offline') {
+
+    } else {
+
+    }
         //Get all user friends
         // if show = 'online'
         // if show = 'offline'
