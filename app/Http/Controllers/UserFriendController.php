@@ -17,7 +17,7 @@ class UserFriendController extends Controller
             $friendRequest->user_id = $request['user_id'];
             $friendRequest->friend_id = $request['friend_id'];
             $friendRequest->save();
-            return response()->json($friendRequest, 201);
+            return response()->json($friendRequest, 200);
 
         }
         return 'invalid';
@@ -29,7 +29,7 @@ class UserFriendController extends Controller
 //        if ($this->verifyAuthKey($request['user_id'], $request['auth_key'])) {
 //            $friendRequest = UserFriendRequest::where('user_id', $request['user_id'])->orWhere('friend_id', $request['user_id'])->orWhere('user_id', $request['friend_id'])->orWhere('friend_id', $request['friend_id'])->first();
 //            $friendRequest->delete();
-//            return response()->json($friendRequest, 201);
+//            return response()->json($friendRequest, 200);
 //
 //        }
         return 'invalid';
@@ -50,7 +50,7 @@ class UserFriendController extends Controller
                 $query->where('user_id', '=', $request['friend_id'])->where('friend_id', '=', $request['user_id']);
             });
             $friendRequest->delete();
-            return response()->json($friendRequest, 201);
+            return response()->json($friendRequest, 200);
 
         }
         return 'invalid';
