@@ -2,9 +2,8 @@ import React from 'react';
 import API from "../utils/API"
 import "../assets/css/Homepage.scss"
 import {Link, withRouter} from "react-router-dom";
-import { connect} from 'react-redux';
+import { connect } from 'react-redux';
 import * as actions from '../store/actions/auth';
-import {FingerprintSpinner} from "react-epic-spinners";
 
 
 class Homepage extends React.Component {
@@ -13,16 +12,12 @@ class Homepage extends React.Component {
 
         return (
             <div className="App">
-                <h1>Homepage</h1>
                 {
                     this.props.isAuthenticated ?
-
-                        <FingerprintSpinner className="loader" size={800}/>
-                        &&
-                        setTimeout(() => {
-                            this.props.history.push("/Dashboard")
-                        }, 3000)
-
+                        <div>
+                            <Link to="/Dashboard">Open</Link>
+                            <button onClick={this.props.logout}>Logout</button>
+                        </div>
 
                         :
                         <Link to="/sign-in">Login</Link>
@@ -39,4 +34,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(Homepage));
+export default connect(null, mapDispatchToProps)(Homepage);

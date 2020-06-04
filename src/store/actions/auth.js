@@ -53,33 +53,33 @@ export const authLogin = (username, password) => {
             const id = res.data[0].id;
             const username = res.data[0].username;
 
+            console.log(res.data[0].username);
+            console.log(res.data.username.typeOf());
             const expirationDate = new Date(new Date().getTime() + 86400 * 1000);
-            localStorage.setItem('token', token);
-            localStorage.setItem('expirationDate', expirationDate);
-            localStorage.setItem('id', id);
-            localStorage.setItem('username', username);
+            localStorage.setItem("token", token);
+            localStorage.setItem("expirationDate", expirationDate);
+            localStorage.setItem("id", id);
+            localStorage.setItem("username", username);
             dispatch(authSuccess(token));
             dispatch(checkAuthTimeout(86400));
         })
             .catch(err => {
                 dispatch(authFail(err))
             })
-
     }
-
 };
 
-export const authSignup = (username, password, email) => {
+export const authSignup = (username, email, password) => {
     return dispatch => {
         dispatch(authStart());
-        API.post('user/register', {
+        API.put('user/register', {
             username: username,
-            password: password,
             email: email,
+            password: password,
         })
             .then(res => {
-                const token = res.data[0].auth_key;
-                const id = res.data[0].id;
+                const token = res.data.auth_key;
+                const id = res.data.id;
                 const expirationDate = new Date(new Date().getTime() + 86400 * 1000);
                 localStorage.setItem('token', token);
                 localStorage.setItem('expirationDate', expirationDate);
