@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\UserFriendRequest;
+use App\UserFriendship;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
