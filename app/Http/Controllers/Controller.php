@@ -19,15 +19,9 @@ class Controller extends BaseController
             'id' => $userId,
             'auth_key' => $authKey
         ])->exists()) {
-            return true;
+           return true;
         }
-        $this->response['succes'] = false;
-        $this->response['response']['error'] = 'Invalid auth_key';
         return false;
     }
 
-
-    protected function parseResponse() {
-        return $this->response;
-    }
 }

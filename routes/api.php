@@ -17,21 +17,21 @@ use Illuminate\Support\Facades\Route;
 
 
 // api/users
-Route::post('users', 'UserController@index');
+Route::get('users', 'UserController@index');
 
 // api/user
-Route::post('user/{id}', 'UserController@show');
-Route::post('user/{id}/{string}', 'UserController@showDetailed');
+Route::get('user/{id}', 'UserController@show');
+Route::get('user/{id}/{string}', 'UserController@showDetailed');
 Route::post('user/login', 'UserController@login');
-Route::post('user/register', 'UserController@register');
+Route::put('user/register', 'UserController@register');
 
 // api/user/friend
-Route::post('user/friend/add', 'UserFriendController@add');
-Route::post('user/friend/remove', 'UserFriendController@remove');
-Route::post('user/friend/request/accept', 'UserFriendController@accept');
-Route::post('user/friend/request/decline', 'UserFriendController@decline');
+Route::put('user/friend/add', 'UserFriendController@add');
+Route::delete('user/friend/delete', 'UserFriendController@delete');
+Route::put('user/friend/request/accept', 'UserFriendController@accept');
+Route::delete('user/friend/request/decline', 'UserFriendController@decline');
 
 // api/user/friends
-Route::post('user/friends/{id}', 'UserFriendController@userFriends');
-Route::post('user/friends', 'UserFriendController@friends');
-Route::post('user/friends/{string}', 'UserFriendController@friends');
+Route::get('user/friends/{id}', 'UserFriendController@userFriends');
+Route::get('user/friends', 'UserFriendController@friends');
+Route::get('user/friends/{string}', 'UserFriendController@friends');
