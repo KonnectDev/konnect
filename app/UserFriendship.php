@@ -15,4 +15,9 @@ class UserFriendship extends Model
      * @var bool
      */
     public $timestamps = false;
+
+        protected $fillable = [
+            'user_id',
+            'friend_id'
+        ];
 }
