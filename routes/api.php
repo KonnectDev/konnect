@@ -26,10 +26,10 @@ Route::post('user/login', 'UserController@login');
 Route::post('user/register', 'UserController@register');
 
 // api/user/friend
-Route::post('user/friend/add', 'UserFriendController@add');
+Route::get('user/friend/add', 'UserFriendController@add');
 Route::post('user/friend/remove', 'UserFriendController@remove');
 Route::get('user/friend/request/accept', 'UserFriendController@accept');
-Route::post('user/friend/request/decline', 'UserFriendController@decline');
+Route::get('user/friend/request/decline', 'UserFriendController@decline');
 
 // api/user/friends
 Route::post('user/friends/{id}', 'UserFriendController@userFriends');
