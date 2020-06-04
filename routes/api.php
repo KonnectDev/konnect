@@ -34,4 +34,3 @@ Route::delete('user/friend/request/decline', 'UserFriendController@decline');
 // api/user/friends
 Route::get('user/friends/{id}', 'UserFriendController@userFriends');
 Route::get('user/friends', 'UserFriendController@friends');
-Route::get('user/friends/{string}', 'UserFriendController@friends');

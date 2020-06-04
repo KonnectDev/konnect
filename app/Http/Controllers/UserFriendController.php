@@ -27,15 +27,15 @@ class UserFriendController extends Controller
     public function delete(Request $request)
     {
         if ($this->verifyAuthKey($request['user_id'], $request['auth_key'])) {
-            $UserFriendship = UserFriendship::where(function ($query) use($request) {
-                  $query->where('user_id', '=', $request['user_id'])->where('friend_id', '=', $request['friend_id']);
-                                                         })->orWhere(function ($query) use($request) {
-                                                             $query->where('user_id', '=', $request['friend_id'])->where('friend_id', '=', $request['user_id']);
-                                                         });
+            $UserFriendship = UserFriendship::where(function ($query) use ($request) {
+                $query->where('user_id', '=', $request['user_id'])->where('friend_id', '=', $request['friend_id']);
+            })->orWhere(function ($query) use ($request) {
+                $query->where('user_id', '=', $request['friend_id'])->where('friend_id', '=', $request['user_id']);
+            });
             $UserFriendship->delete();
             return response()->json($UserFriendship, 200);
 
-       }
+        }
         return 'invalid';
     }
 
@@ -57,9 +57,9 @@ class UserFriendController extends Controller
     {
 
         if ($this->verifyAuthKey($request['user_id'], $request['auth_key'])) {
-            $friendRequest = UserFriendRequest::where(function ($query) use($request) {
+            $friendRequest = UserFriendRequest::where(function ($query) use ($request) {
                 $query->where('user_id', '=', $request['user_id'])->where('friend_id', '=', $request['friend_id']);
-            })->orWhere(function ($query) use($request) {
+            })->orWhere(function ($query) use ($request) {
                 $query->where('user_id', '=', $request['friend_id'])->where('friend_id', '=', $request['user_id']);
             });
             $friendRequest->delete();
@@ -69,18 +69,21 @@ class UserFriendController extends Controller
         return 'invalid';
     }
 
-    public function friends($show = 'all')
+    public function friends(Request $request)
     {
-    if($show == 'online') {
+        if ($this->verifyAuthKey($request['user_id'], $request['auth_key'])) {
+            if ($show == 'online') {
 
-    } else if($show == 'offline') {
+            } else if ($show == 'offline') {
 
-    } else {
+            } else {
 
-    }
-        //Get all user friends
-        // if show = 'online'
-        // if show = 'offline'
+            }
+            //Get all user friends
+            // if show = 'online'
+            // if show = 'offline'
+        }
+
     }
 
     public function userFriends($id, $show = 'all')
