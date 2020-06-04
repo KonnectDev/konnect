@@ -14,6 +14,7 @@
     },
     "scripts": {
         "electron": "cross-env NODE_ENV=dev nodemon --exec \"\"electron .\"\"",
+        "package-win": "yarn build && electron-builder build --win --x64",
         "start": "cross-env BROWSER=none react-scripts start",
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",

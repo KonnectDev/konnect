@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
 import API from "../../utils/API";
-import add from "../../assets/img/person_add.svg";
+import Invite from '../../assets/img/Invite.svg';
 import Search from "./Search";
 import {ListitemFriend, ListitemGuild} from "./Listitem";
 import List from "@material-ui/core/List";
@@ -37,7 +37,6 @@ const Friends = [
 const Guild = [
 
     {
-
         username: "Superstars",
         image: "https://picsum.photos/200/300",
         rank: 25
@@ -83,16 +82,16 @@ export default class Sidebar extends React.Component {
 
         const id = localStorage.getItem("id");
 
-        API
-            .get(`user/friend/${id}`)
-            .then(response => {
-                console.log(response);
-                this.setState({friends: response.data});
-                console.log(this.state.friends)
-            })
-            .catch(err => {
-                console.log(err);
-            })
+        // API
+        //     .get(`user/friends/${id}`)
+        //     .then(response => {
+        //         console.log(response);
+        //         this.setState({friends: response.data});
+        //         console.log(this.state.friends)
+        //     })
+        //     .catch(err => {
+        //         console.log(err);
+        //     })
     }
 
 
@@ -109,7 +108,14 @@ export default class Sidebar extends React.Component {
         return (
                 <div className={"sidebar"}>
                         <div className="Online"><p>Friends Online ({this.state.friends.length})</p></div>
-                        <p className="Invite">Invite</p>
+                    <div className="parent">
+                        <div className="img">
+                            <img src={Invite}/>
+                        </div>
+                        <div className="text">
+                            Invite Friends
+                        </div>
+                    </div>
                         <Search searchText={this.searchText}/>
                     <List>
                         {
@@ -125,7 +131,6 @@ export default class Sidebar extends React.Component {
                                 ))
                         }
                     </List>
-
                         <div className="Online"><p>Guild Members ({this.state.guild.length})</p></div>
                         <Search searchText={this.searchGuild}/>
                         <List>

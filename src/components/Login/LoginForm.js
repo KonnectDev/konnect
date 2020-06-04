@@ -48,8 +48,10 @@ class LoginForm extends React.Component {
             console.log("error");
         }
         else {
-            this.props.history.push("/Dashboard");
+            this.props.history.push("/Dashboard")
         }
+
+
 
     }
 

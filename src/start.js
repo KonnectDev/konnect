@@ -43,10 +43,11 @@ app.on('ready', () => {
         delay: 0,
         minVisible: 1500,
         splashScreenOpts: {
-            height: 500,
-            width: 500,
-            transparent: true,
+            height: 350,
+            width: 300,
+            backgroundColor: '#2f3136',
             },
+
     });
 
     window = ret.main;
@@ -69,6 +70,7 @@ app.on('ready', () => {
         }
     };
     update(5);
+
 });
 
 app.on('window-all-closed', () => {

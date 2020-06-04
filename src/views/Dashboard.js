@@ -21,6 +21,7 @@ class Dashboard extends React.Component {
     render() {
         console.log(localStorage.getItem("token"));
         console.log(localStorage.getItem("id"));
+        console.log(localStorage.getItem("username"));
         return (
             <Router>
                 <NavigationBar />
