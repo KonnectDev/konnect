@@ -31,6 +31,4 @@ Route::delete('user/friend/delete', 'UserFriendController@delete');
 Route::put('user/friend/request/accept', 'UserFriendController@accept');
 Route::delete('user/friend/request/decline', 'UserFriendController@decline');
 
-// api/user/friends
-Route::get('user/friends/{id}', 'UserFriendController@userFriends');
-Route::get('user/friends', 'UserFriendController@friends');
+Route::post('user/friends', 'UserFriendController@userFriends');

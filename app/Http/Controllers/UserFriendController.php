@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\UserFriendRequest;
 use App\UserFriendship;
 use Illuminate\Http\Request;
@@ -69,27 +70,30 @@ class UserFriendController extends Controller
         return 'invalid';
     }
 
-    public function friends(Request $request)
+    public function userFriends(Request $request)
     {
         if ($this->verifyAuthKey($request['user_id'], $request['auth_key'])) {
-            if ($show == 'online') {
+//            if ($request['show'] == 'online') {
+//                return [];
+//            } else if ($request['show'] == 'offline') {
+//                return [];
+//            } else {
 
-            } else if ($show == 'offline') {
+                $userFriends = UserFriendship::where('users.id', '!=', $request['user_id'])->where('user_id', '=', $request['user_id'])->orWhere('friend_id', '=', $request['user_id'])
 
-            } else {
+                    ->join('users', function ($join) {
+                        $join->on('users.id', '=', 'user_friendships.friend_id')->orOn('users.id', '=', 'user_friendships.user_id');
+                    })
+                    ->where('users.id', '!=', $request['user_id'])
+                    ->get(['users.id', 'users.username', 'users.img_small']);
+
+
+                return response()->json($userFriends, 200);
 
             }
-            //Get all user friends
-            // if show = 'online'
-            // if show = 'offline'
-        }
 
-    }
+       // }
+        return 'invalid';
 
-    public function userFriends($id, $show = 'all')
-    {
-        //Get all user friends by id
-        // if show = 'online'
-        // if show = 'offline'
     }
 }
