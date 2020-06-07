@@ -7,56 +7,9 @@ import Search from "./Search";
 import {ListitemFriend, ListitemGuild} from "./Listitem";
 import List from "@material-ui/core/List";
 import SearchGuild from "./SearchGuild";
+import UserNavbarLinks from "../Navbar/UserNavbarLinks";
+import logo from '../../assets/img/Konnect-logo-text.svg'
 
-
-const Friends = [
-    {
-        username: "Henk",
-        image: "https://picsum.photos/200/300",
-        level: 10
-    },
-    {
-        username: "Jan",
-        image: "https://picsum.photos/200/300",
-        level: 58
-    },
-    {
-        username: "Peter",
-        image: "https://picsum.photos/200/300",
-        level: 560
-    },
-    {
-        username: "Sandra",
-        image: "https://picsum.photos/200/300",
-        level: 1
-    },
-
-
-];
-
-const Guild = [
-
-    {
-        username: "Superstars",
-        image: "https://picsum.photos/200/300",
-        rank: 25
-    },
-    {
-        username: "Idk",
-        image: "https://picsum.photos/200/300",
-        rank: 45
-    },
-    {
-        username: "JumpSquad",
-        image: "https://picsum.photos/200/300",
-        rank: 89
-    },
-
-    ]
-
-const StyledSideNav = styled.div`
-
-`;
 
 export default class Sidebar extends React.Component {
 
@@ -68,30 +21,35 @@ export default class Sidebar extends React.Component {
             guild: [],
             searchText: '',
             searchGuild: '',
+            width: window.innerWidth,
         };
 
     }
 
-
+    updateDimensions() {
+        this.setState({ width: window.innerWidth });
+    }
 
 
     componentDidMount() {
 
-        this.setState({friends: Friends});
-        this.setState({guild: Guild});
-
         const id = localStorage.getItem("id");
+        const auth_key = localStorage.getItem("token");
 
-        // API
-        //     .get(`user/friends/${id}`)
-        //     .then(response => {
-        //         console.log(response);
-        //         this.setState({friends: response.data});
-        //         console.log(this.state.friends)
-        //     })
-        //     .catch(err => {
-        //         console.log(err);
-        //     })
+        API
+            .post(`user/friends?user_id=${id}&auth_key=${auth_key}`)
+            .then(response => {
+                console.log(response);
+                this.setState({friends: response.data});
+                console.log(this.state.friends)
+            })
+            .catch(err => {
+                console.log(err);
+            })
+
+
+        this.updateDimensions();
+        window.addEventListener("resize", this.updateDimensions.bind(this));
     }
 
 
@@ -106,48 +64,71 @@ export default class Sidebar extends React.Component {
 
     render() {
         return (
-                <div className={"sidebar"}>
-                        <div className="Online"><p>Friends Online ({this.state.friends.length})</p></div>
-                    <div className="parent">
-                        <div className="img">
-                            <img src={Invite}/>
-                        </div>
-                        <div className="text">
-                            Invite Friends
-                        </div>
-                    </div>
-                        <Search searchText={this.searchText}/>
-                    <List>
-                        {
+            <div
+                id="sidebar"
+                className="sidebar"
+                data-color={this.props.color}
+                data-image={this.props.image}
+                style={{marginTop: "0px"}}
+            >
 
-                            this.state.friends.filter(friend => (friend.username.toLowerCase().includes(this.state.searchText.toLowerCase())))
-                                .map((friend, index) => (
-                                    <ListitemFriend
-                                        alt={friend.username}
-                                        src={friend.image}
-                                        username={friend.username}
-                                        level={friend.level}
-                                    />
-                                ))
-                        }
-                    </List>
-                        <div className="Online"><p>Guild Members ({this.state.guild.length})</p></div>
-                        <Search searchText={this.searchGuild}/>
-                        <List>
-                        {
-
-                            this.state.guild.filter(guild => (guild.username.toLowerCase().includes(this.state.searchGuild.toLowerCase())))
-                                .map((guild, index) => (
-                                    <ListitemGuild
-                                        alt={guild.username}
-                                        src={guild.image}
-                                        username={guild.username}
-                                        rank={guild.rank}
-                                    />
-                                ))
-                        }
-                    </List>
+                <div className="logo">
+                    <img src={logo} alt="logo_image" width="200px"/>
                 </div>
+                <div className="sidebar-wrapper">
+                    <ul className="nav">
+                        {this.state.width <= 991 ? <UserNavbarLinks /> : null}
+                        <div className="online"><p>Total Friends {this.state.friends === null ? "0" :this.state.friends.length}</p></div>
+                    </ul>
+                </div>
+            </div>
+                // <div className={"sidebar"}>
+                //         <div className="Online"><p>Total Friends {this.state.friends === null ? "0" :this.state.friends.length}</p></div>
+                //     <div className="parent">
+                //         <div className="img">
+                //             <img src={Invite}/>
+                //         </div>
+                //         <div className="text">
+                //             Invite Friends
+                //         </div>
+                //     </div>
+                //         <Search searchText={this.searchText}/>
+                //     <List>
+                //         {
+                //
+                //             this.state.friends === null ?
+                //                 <div/>
+                //
+                //
+                //                 :
+                //             this.state.friends.filter(friend => (friend.username.toLowerCase().includes(this.state.searchText.toLowerCase())))
+                //             .map((friend, index) => (
+                //             <ListitemFriend
+                //             alt={friend.username}
+                //             src={friend.image}
+                //             username={friend.username}
+                //             level={friend.level}
+                //             />
+                //             ))
+                //         }
+                //     </List>
+                //         <div className="Online"><p>Guild Members ({this.state.guild.length})</p></div>
+                //         <Search searchText={this.searchGuild}/>
+                //         <List>
+                //         {
+                //
+                //             this.state.guild.filter(guild => (guild.username.toLowerCase().includes(this.state.searchGuild.toLowerCase())))
+                //                 .map((guild, index) => (
+                //                     <ListitemGuild
+                //                         alt={guild.username}
+                //                         src={guild.image}
+                //                         username={guild.username}
+                //                         rank={guild.rank}
+                //                     />
+                //                 ))
+                //         }
+                //     </List>
+                // </div>
 
         );
     }

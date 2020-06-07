@@ -39,7 +39,7 @@ app.on('ready', () => {
     };
     let ret = Splashscreen.initDynamicSplashScreen({
         windowOpts: windowOptions,
-        templateUrl: path.join(__dirname, "..", "logo-animation.html"),
+        templateUrl: path.join(__dirname, "..", "logoo.html"),
         delay: 0,
         minVisible: 1500,
         splashScreenOpts: {

@@ -2,6 +2,8 @@ import React from "react";
 import Homepage from "./views/Homepage";
 import Dashboard from "./views/Dashboard";
 import RegisterPage from "./views/RegisterPage";
+import Profile from "./views/Profile";
+import Feed from "./views/Feed";
 
 
 // Some folks find value in a centralized route config.
@@ -14,17 +16,16 @@ import RegisterPage from "./views/RegisterPage";
 const routes = [
     {
         path: "/",
-        component: Homepage,
+        name: "Feed",
+        component: Feed,
+        layout: "/Dashboard"
     },
     {
-        path: "/home",
-        component: Dashboard,
+        path: "/profile",
+        name: "Profile",
+        component: Profile,
+        layout: "/Dashboard"
     },
-    {
-        path: "/register",
-        component: RegisterPage,
-    },
-
 
 ];
 

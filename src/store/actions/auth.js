@@ -2,6 +2,7 @@ import * as actionTypes from './actionsTypes';
 import axios from 'axios';
 import API from '../../utils/API';
 
+
 export const authStart = () => {
     return {
         type: actionTypes.AUTH_START
@@ -52,16 +53,14 @@ export const authLogin = (username, password) => {
             const token = res.data[0].auth_key;
             const id = res.data[0].id;
             const username = res.data[0].username;
-
             console.log(res.data[0].username);
-            console.log(res.data.username.typeOf());
             const expirationDate = new Date(new Date().getTime() + 86400 * 1000);
             localStorage.setItem("token", token);
             localStorage.setItem("expirationDate", expirationDate);
             localStorage.setItem("id", id);
             localStorage.setItem("username", username);
-            dispatch(authSuccess(token));
             dispatch(checkAuthTimeout(86400));
+            dispatch(authSuccess(token));
         })
             .catch(err => {
                 dispatch(authFail(err))

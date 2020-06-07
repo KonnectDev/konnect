@@ -46,7 +46,7 @@ class RegisterForm extends React.Component {
 
 
         if (token && id && username === null){
-            console.log("error");
+            this.props.history.push("/sign-in");
         }
         else {
             this.props.history.push("/Dashboard");
