@@ -9,7 +9,7 @@ import UserNavbarLinks from "./UserNavbarLinks";
 import * as actions from "../../store/actions/auth";
 import withRouter from "react-router-dom/es/withRouter";
 import {connect} from "react-redux";
-import '../../assets/css/navbar.scss;
+import "../../assets/css/navbar.scss";
 
 
 
