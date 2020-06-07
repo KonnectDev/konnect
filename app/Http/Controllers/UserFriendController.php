@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\UserFriendRequest;
 use App\UserFriendship;
 use Illuminate\Http\Request;
@@ -27,15 +28,15 @@ class UserFriendController extends Controller
     public function delete(Request $request)
     {
         if ($this->verifyAuthKey($request['user_id'], $request['auth_key'])) {
-            $UserFriendship = UserFriendship::where(function ($query) use($request) {
-                  $query->where('user_id', '=', $request['user_id'])->where('friend_id', '=', $request['friend_id']);
-                                                         })->orWhere(function ($query) use($request) {
-                                                             $query->where('user_id', '=', $request['friend_id'])->where('friend_id', '=', $request['user_id']);
-                                                         });
+            $UserFriendship = UserFriendship::where(function ($query) use ($request) {
+                $query->where('user_id', '=', $request['user_id'])->where('friend_id', '=', $request['friend_id']);
+            })->orWhere(function ($query) use ($request) {
+                $query->where('user_id', '=', $request['friend_id'])->where('friend_id', '=', $request['user_id']);
+            });
             $UserFriendship->delete();
             return response()->json($UserFriendship, 200);
 
-       }
+        }
         return 'invalid';
     }
 
@@ -57,9 +58,9 @@ class UserFriendController extends Controller
     {
 
         if ($this->verifyAuthKey($request['user_id'], $request['auth_key'])) {
-            $friendRequest = UserFriendRequest::where(function ($query) use($request) {
+            $friendRequest = UserFriendRequest::where(function ($query) use ($request) {
                 $query->where('user_id', '=', $request['user_id'])->where('friend_id', '=', $request['friend_id']);
-            })->orWhere(function ($query) use($request) {
+            })->orWhere(function ($query) use ($request) {
                 $query->where('user_id', '=', $request['friend_id'])->where('friend_id', '=', $request['user_id']);
             });
             $friendRequest->delete();
@@ -69,17 +70,30 @@ class UserFriendController extends Controller
         return 'invalid';
     }
 
-    public function friends($show = 'all')
+    public function userFriends(Request $request)
     {
-        //Get all user friends
-        // if show = 'online'
-        // if show = 'offline'
-    }
+        if ($this->verifyAuthKey($request['user_id'], $request['auth_key'])) {
+//            if ($request['show'] == 'online') {
+//                return [];
+//            } else if ($request['show'] == 'offline') {
+//                return [];
+//            } else {
 
-    public function userFriends($id, $show = 'all')
-    {
-        //Get all user friends by id
-        // if show = 'online'
-        // if show = 'offline'
+                $userFriends = UserFriendship::where('users.id', '!=', $request['user_id'])->where('user_id', '=', $request['user_id'])->orWhere('friend_id', '=', $request['user_id'])
+
+                    ->join('users', function ($join) {
+                        $join->on('users.id', '=', 'user_friendships.friend_id')->orOn('users.id', '=', 'user_friendships.user_id');
+                    })
+                    ->where('users.id', '!=', $request['user_id'])
+                    ->get(['users.id', 'users.username', 'users.img_small']);
+
+
+                return response()->json($userFriends, 200);
+
+            }
+
+       // }
+        return 'invalid';
+
     }
 }
