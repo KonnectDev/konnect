@@ -2,6 +2,7 @@ import * as actionTypes from './actionsTypes';
 import axios from 'axios';
 import API from '../../utils/API';
 
+
 export const authStart = () => {
     return {
         type: actionTypes.AUTH_START
@@ -25,10 +26,13 @@ export const authFail = error => {
 export const logout = () => {
     localStorage.removeItem('user');
     localStorage.removeItem('expirationDate');
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    localStorage.removeItem('username');
     return {
         type: actionTypes.AUTH_LOGOUT
     }
-}
+};
 
 export const checkAuthTimeout = expirationTime => {
     return dispatch => {
@@ -41,17 +45,22 @@ export const checkAuthTimeout = expirationTime => {
 export const authLogin = (username, password) => {
     return dispatch => {
         dispatch(authStart());
-        API.post('login/', {
+        API.post('user/login', {
             username: username,
             password: password
         })
         .then(res => {
-            const token = res.data.key;
+            const token = res.data[0].auth_key;
+            const id = res.data[0].id;
+            const username = res.data[0].username;
+            console.log(res.data[0].username);
             const expirationDate = new Date(new Date().getTime() + 86400 * 1000);
-            localStorage.setItem('token', token);
-            localStorage.setItem('expirationDate', expirationDate);
-            dispatch(authSuccess(token));
+            localStorage.setItem("token", token);
+            localStorage.setItem("expirationDate", expirationDate);
+            localStorage.setItem("id", id);
+            localStorage.setItem("username", username);
             dispatch(checkAuthTimeout(86400));
+            dispatch(authSuccess(token));
         })
             .catch(err => {
                 dispatch(authFail(err))
@@ -59,32 +68,33 @@ export const authLogin = (username, password) => {
     }
 };
 
-export const authSignup = (username, password, firstname, lastname, email, birthdate, phonenumber, countrycode) => {
+export const authSignup = (username, email, password) => {
     return dispatch => {
         dispatch(authStart());
-        API.post('registration/', {
+        API.put('user/register', {
             username: username,
-            password: password,
-            firstname: firstname,
-            lastname: lastname,
             email: email,
-            birthdate: birthdate,
-            phonenumber: phonenumber,
-            countrycode: countrycode
+            password: password,
         })
             .then(res => {
-                const token = res.data.key;
+                const token = res.data.auth_key;
+                const id = res.data.id;
                 const expirationDate = new Date(new Date().getTime() + 86400 * 1000);
                 localStorage.setItem('token', token);
                 localStorage.setItem('expirationDate', expirationDate);
+                localStorage.setItem('id', id);
+                localStorage.setItem('username', username);
                 dispatch(authSuccess(token));
                 dispatch(checkAuthTimeout(86400));
             })
             .catch(err => {
-                dispatch(authFail(err))
+                dispatch(authFail(err));
+                console.log(err)
             })
     }
 };
+
+
 
 export const authCheckState = () => {
     return dispatch => {

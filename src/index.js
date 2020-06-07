@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './assets/css/index.css';
+import './assets/css/index.scss';
 import * as serviceWorker from './serviceWorker';
 import App from "./App";
 import { createStore, compose, applyMiddleware } from "redux";

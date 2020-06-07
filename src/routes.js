@@ -1,8 +1,10 @@
 import React from "react";
 import Homepage from "./views/Homepage";
 import Dashboard from "./views/Dashboard";
-import SignUpInPage from "./views/SignUp-InPage";
 import RegisterPage from "./views/RegisterPage";
+import Profile from "./views/Profile";
+import Feed from "./views/Feed";
+import LeaderboardPage from "./views/LeaderboardPage";
 
 
 // Some folks find value in a centralized route config.
@@ -14,22 +16,23 @@ import RegisterPage from "./views/RegisterPage";
 // way you'd do inside a `<Switch>`.
 const routes = [
     {
-        path: "/",
-        component: Homepage,
+        path: "/feed",
+        name: "Feed",
+        component: Feed,
+        layout: "/Dashboard"
     },
     {
-        path: "/home",
-        component: Dashboard,
+        path: "/profile",
+        name: "Profile",
+        component: Profile,
+        layout: "/Dashboard"
     },
     {
-        path: "/register",
-        component: RegisterPage,
+        path: "/leaderboard",
+        name: "Leaderboard",
+        component: LeaderboardPage,
+        layout: "/Dashboard"
     },
-    {
-        path: "/login",
-        component: SignUpInPage,
-    }
-
 
 ];
 

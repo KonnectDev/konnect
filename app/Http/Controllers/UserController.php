@@ -21,21 +21,32 @@ class UserController extends Controller
         return User::find($id, ['username', 'firstname', 'lastname', 'img_medium', 'bio']);
 
     }
+    public function showDetailed($id, $string)
+    {
+        if(in_array($string, ['username', 'firstname', 'lastname', 'img_medium', 'bio'])) {
+            return User::find($id, [$string]);
+        }
+        return User::find($id, ['username', 'firstname', 'lastname', 'img_medium', 'bio']);
+
+    }
+
 
     public function login(Request $request)
     {
 
-        return DB::table('users')->where([
+        $user = DB::table('users')->where([
             'username' => $request['username'],
             'password' => md5($request['password'])
         ])->get(['id','username', 'auth_key']);
+        return response()->json($user, 200);
+
 
     }
 
     public function register(Request $request)
     {
         $request['auth_key'] = md5($request['username'] . time());
-
+        $request['password'] = md5($request['password']);
         $user = User::create($request->all());
         return response()->json($user, 201);
 
