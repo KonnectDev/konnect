@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
+import {BrowserRouter as Router, Route, Link, withRouter} from "react-router-dom";
 import API from "../../utils/API";
 import Invite from '../../assets/img/Invite.svg';
 import Search from "./Search";
@@ -27,7 +27,7 @@ export default class Sidebar extends React.Component {
     }
 
     updateDimensions() {
-        this.setState({ width: window.innerWidth });
+        this.setState({width: window.innerWidth});
     }
 
 
@@ -45,7 +45,7 @@ export default class Sidebar extends React.Component {
             })
             .catch(err => {
                 console.log(err);
-            })
+            });
 
 
         this.updateDimensions();
@@ -77,58 +77,55 @@ export default class Sidebar extends React.Component {
                 </div>
                 <div className="sidebar-wrapper">
                     <ul className="nav">
-                        {this.state.width <= 991 ? <UserNavbarLinks /> : null}
-                        <div className="online"><p>Total Friends {this.state.friends === null ? "0" :this.state.friends.length}</p></div>
+                        {this.state.width <= 991 ? <UserNavbarLinks/> : null}
+                        <div className="Online"><p>Total
+                            Friends {this.state.friends === null ? "0" : this.state.friends.length}</p></div>
+                        <div className="parent">
+                            <div className="img">
+                                <img src={Invite}/>
+                            </div>
+                            <div className="text">
+                                Invite Friends
+                            </div>
+                        </div>
+                        <Search searchText={this.searchText}/>
+                        <List>
+                            {
+
+                                this.state.friends === null ?
+                                    <div/>
+
+
+                                    :
+                                    this.state.friends.filter(friend => (friend.username.toLowerCase().includes(this.state.searchText.toLowerCase())))
+                                        .map((friend, index) => (
+                                            <ListitemFriend
+                                                src={friend.image}
+                                                username={friend.username}
+                                                level={friend.level}
+                                                koins={1003}
+                                            />
+                                        ))
+                            }
+                        </List>
+                        <div className="Online"><p>Guild Members ({this.state.guild.length})</p></div>
+                        <Search searchText={this.searchGuild}/>
+                        <List>
+                            {
+
+                                this.state.guild.filter(guild => (guild.username.toLowerCase().includes(this.state.searchGuild.toLowerCase())))
+                                    .map((guild, index) => (
+                                        <ListitemGuild
+                                            src={guild.image}
+                                            username={guild.username}
+                                            level={guild.level}
+                                        />
+                                    ))
+                            }
+                        </List>
                     </ul>
                 </div>
             </div>
-                // <div className={"sidebar"}>
-                //         <div className="Online"><p>Total Friends {this.state.friends === null ? "0" :this.state.friends.length}</p></div>
-                //     <div className="parent">
-                //         <div className="img">
-                //             <img src={Invite}/>
-                //         </div>
-                //         <div className="text">
-                //             Invite Friends
-                //         </div>
-                //     </div>
-                //         <Search searchText={this.searchText}/>
-                //     <List>
-                //         {
-                //
-                //             this.state.friends === null ?
-                //                 <div/>
-                //
-                //
-                //                 :
-                //             this.state.friends.filter(friend => (friend.username.toLowerCase().includes(this.state.searchText.toLowerCase())))
-                //             .map((friend, index) => (
-                //             <ListitemFriend
-                //             alt={friend.username}
-                //             src={friend.image}
-                //             username={friend.username}
-                //             level={friend.level}
-                //             />
-                //             ))
-                //         }
-                //     </List>
-                //         <div className="Online"><p>Guild Members ({this.state.guild.length})</p></div>
-                //         <Search searchText={this.searchGuild}/>
-                //         <List>
-                //         {
-                //
-                //             this.state.guild.filter(guild => (guild.username.toLowerCase().includes(this.state.searchGuild.toLowerCase())))
-                //                 .map((guild, index) => (
-                //                     <ListitemGuild
-                //                         alt={guild.username}
-                //                         src={guild.image}
-                //                         username={guild.username}
-                //                         rank={guild.rank}
-                //                     />
-                //                 ))
-                //         }
-                //     </List>
-                // </div>
 
         );
     }

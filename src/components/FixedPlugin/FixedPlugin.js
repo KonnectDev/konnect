@@ -2,6 +2,7 @@
 /*eslint-disable*/
 import React, { Component } from "react";
 import Toggle from "react-toggle";
+import SettingsIcon from '@material-ui/icons/Settings';
 
 
 
@@ -26,7 +27,7 @@ class FixedPlugin extends Component {
       <div className="fixed-plugin">
         <div id="fixedPluginClasses" className={this.props.fixedClasses}>
           <div onClick={this.handleClick}>
-            <i className="fa fa-cog fa-2x" />
+            <SettingsIcon fontSize={"large"}/>
           </div>
           <ul className="dropdown-menu">
             <li className="header-title">Configuration</li>

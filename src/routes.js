@@ -4,6 +4,7 @@ import Dashboard from "./views/Dashboard";
 import RegisterPage from "./views/RegisterPage";
 import Profile from "./views/Profile";
 import Feed from "./views/Feed";
+import LeaderboardPage from "./views/LeaderboardPage";
 
 
 // Some folks find value in a centralized route config.
@@ -15,7 +16,7 @@ import Feed from "./views/Feed";
 // way you'd do inside a `<Switch>`.
 const routes = [
     {
-        path: "/",
+        path: "/feed",
         name: "Feed",
         component: Feed,
         layout: "/Dashboard"
@@ -24,6 +25,12 @@ const routes = [
         path: "/profile",
         name: "Profile",
         component: Profile,
+        layout: "/Dashboard"
+    },
+    {
+        path: "/leaderboard",
+        name: "Leaderboard",
+        component: LeaderboardPage,
         layout: "/Dashboard"
     },
 

@@ -1,9 +1,14 @@
 @import '~material-design-icons/iconfont/material-icons.css';
 
+.inline {
+    display: inline;
+}
+
+
 
 .Search {
-    width: 25ch;
     margin-top: 3ch;
+    margin-left: 1ch;
 }
 
 .Search-box {
@@ -37,7 +42,10 @@
 
 //normal
 .sidebar {
+
     background-color: #2F3136; /* Black */
+    color: white;
+
 }
 
 
