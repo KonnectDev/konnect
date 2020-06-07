@@ -20,7 +20,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * lul verhaal
+     *
      * The attributes that should be hidden for arrays.
      *
      * @var array
