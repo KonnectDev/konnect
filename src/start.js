@@ -45,7 +45,7 @@ app.on('ready', () => {
         splashScreenOpts: {
             height: 350,
             width: 300,
-            backgroundColor: '#2f3136',
+            transparent: true,
             },
 
     });
@@ -69,7 +69,7 @@ app.on('ready', () => {
             window.maximize()
         }
     };
-    update(5);
+    update(12);
 
 });
 
