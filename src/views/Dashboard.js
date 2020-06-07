@@ -63,7 +63,7 @@ class Dashboard extends React.Component {
                 return routes[i].name;
             }
         }
-        return "Brand";
+        return "Home";
     };
     handleImageClick = image => {
         this.setState({ image: image });
