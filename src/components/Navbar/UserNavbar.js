@@ -9,7 +9,6 @@ import UserNavbarLinks from "./UserNavbarLinks";
 import * as actions from "../../store/actions/auth";
 import withRouter from "react-router-dom/es/withRouter";
 import {connect} from "react-redux";
-import "../../assets/css/navbar.scss";
 
 
 
@@ -42,7 +41,10 @@ class UserNavbar extends Component {
     render() {
         return (
             <Navbar fluid bg="dark">
-                <Navbar.Toggle onClick={this.mobileSidebarToggle} />
+                <Navbar.Brand href="#home">
+                    <a>{this.props.brandText}</a>
+                </Navbar.Brand>
+                <Navbar.Toggle onClick={this.mobileSidebarToggle}/>
                 <Navbar.Collapse>
                     <UserNavbarLinks loggingout={this.props.logout}/>
                 </Navbar.Collapse>
