@@ -2,13 +2,28 @@ import React from "react";
 import {ListitemFriend} from "../Sidebar/Listitem";
 import API from "../../utils/API";
 import ListItemUser from "./ListItemUser";
+import image from '../../assets/img/face-3.jpg';
+
 
 class List extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            users: [],
+            users: [
+                {
+                    username: "Henk",
+                    image: image,
+                    koins: 50,
+                    lvl: 50,
+                },
+                {
+                    username: "Jan",
+                    image: image,
+                    koins: 10,
+                    level: 70,
+                },
+            ],
         }
     }
 
@@ -17,15 +32,15 @@ class List extends React.Component {
         const id = localStorage.getItem("id");
         const auth_key = localStorage.getItem("token");
 
-        API
-            .post(`user/friends?user_id=${id}&auth_key=${auth_key}`)
-            .then(response => {
-                console.log(response);
-                this.setState({users: response.data});
-            })
-            .catch(err => {
-                console.log(err);
-            });
+        // API
+        //     .post(`users`)
+        //     .then(response => {
+        //         console.log(response);
+        //         this.setState({users: response.data});
+        //     })
+        //     .catch(err => {
+        //         console.log(err);
+        //     });
 
     }
 
@@ -39,15 +54,18 @@ class List extends React.Component {
                         <th scope="col">#</th>
                         <th scope="col">Profile picture</th>
                         <th scope="col">Name</th>
-                        <th scope="col">mmr</th>
-                        <th scope="col">lvl</th>
+                        <th scope="col">Koins</th>
+                        <th scope="col">Level</th>
                     </tr>
                     </thead>
                     <tbody>
                     {
                         this.state.users.slice(0, this.props.max).map((user, index) => (
                             <ListItemUser
-
+                                username={user.username}
+                                image={user.image}
+                                koins={user.koins}
+                                lvl={user.level}
                             />
                         ))
                     }

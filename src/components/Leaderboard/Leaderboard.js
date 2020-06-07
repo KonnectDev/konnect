@@ -1,5 +1,7 @@
 import React from "react";
 import List from '../../components/Leaderboard/List';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../../assets/css/Leaderboard.scss';
 
 class Leaderboard extends React.Component {
 
