@@ -24,6 +24,7 @@ Route::get('user/{id}', 'UserController@show');
 Route::get('user/{id}/{string}', 'UserController@showDetailed');
 Route::post('user/login', 'UserController@login');
 Route::put('user/register', 'UserController@register');
+Route::post('user/password/forget', 'UserController@passwordRecovery');
 
 // api/user/friend
 Route::put('user/friend/add', 'UserFriendController@add');
