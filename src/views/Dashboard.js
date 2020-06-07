@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink, withRouter, Switch, Route } from "react-router-dom";
+import { Link, NavLink, withRouter, Switch, Route, Redirect } from "react-router-dom";
 import UserNavbar from '../components/Navbar/UserNavbar';
 import { connect } from "react-redux";
 import * as actions from '../store/actions/auth';
@@ -36,6 +36,8 @@ class Dashboard extends React.Component {
     getRoutes = routes => {
         return routes.map((prop, key) => {
             if (prop.layout === "/Dashboard") {
+                return <Redirect to="/Dashboard/feed"/>
+            } else {
                 return (
                     <Route
                         path={prop.layout + prop.path}
@@ -47,8 +49,6 @@ class Dashboard extends React.Component {
                         key={key}
                     />
                 );
-            } else {
-                return null;
             }
         });
     };
@@ -63,7 +63,7 @@ class Dashboard extends React.Component {
                 return routes[i].name;
             }
         }
-        return "Brand";
+        return "Home";
     };
     handleImageClick = image => {
         this.setState({ image: image });

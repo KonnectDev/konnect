@@ -85,7 +85,8 @@ export default class Sidebar extends React.Component {
                                 <img src={Invite}/>
                             </div>
                             <div className="text">
-                                Invite Friends
+                                <a >Invite Friends</a>
+
                             </div>
                         </div>
                         <Search searchText={this.searchText}/>
