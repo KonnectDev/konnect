@@ -14,7 +14,7 @@ class UserTableSeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
         User::truncate();
-        for($i = 0; $i < 50; $i++) {
+        for($i = 0; $i < 150; $i++) {
             $username = $faker->userName;
             User::create([
                 'username' => $username,
@@ -29,7 +29,8 @@ class UserTableSeeder extends Seeder
                 'birthdate' => $faker->date(),
                 'img_small' => 'https://dummyimage.com/120x120/a12fa1/ededed.png&text=' . substr($username, 0, 1),
                 'img_medium' => 'https://dummyimage.com/250x250/a12fa1/ededed.png&text=' . substr($username, 0, 1),
-                'auth_key' => md5($username . time())
+                'auth_key' => md5($username . time()),
+                'level' => mt_rand(1,100)
                 ]);
         }
     }
