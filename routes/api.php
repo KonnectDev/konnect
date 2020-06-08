@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\VerifyAuthKey;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,9 +28,10 @@ Route::put('user/register', 'UserController@register');
 Route::post('user/password/forget', 'UserController@passwordRecovery');
 
 // api/user/friend
-Route::put('user/friend/add', 'UserFriendController@add');
-Route::delete('user/friend/delete', 'UserFriendController@delete');
-Route::put('user/friend/request/accept', 'UserFriendController@accept');
-Route::delete('user/friend/request/decline', 'UserFriendController@decline');
+Route::middleware([VerifyAuthKey::class])->put('user/friend/add', 'UserFriendController@add');
+Route::middleware([VerifyAuthKey::class])->delete('user/friend/delete', 'UserFriendController@delete');
+Route::middleware([VerifyAuthKey::class])->put('user/friend/request/accept', 'UserFriendController@accept');
+Route::middleware([VerifyAuthKey::class])->delete('user/friend/request/decline', 'UserFriendController@decline');
 
-Route::post('user/friends', 'UserFriendController@userFriends');
+//Must be get, but ain't working.
+Route::middleware([VerifyAuthKey::class])->post('user/friends', 'UserFriendController@userFriends');

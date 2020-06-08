@@ -56,11 +56,11 @@ class UserController extends Controller
 
     public function passwordRecovery(Request $request)
     {
+        //@todo jake finish function
         $user = DB::table('users')->where([
             'email' => $request['email']
         ])->first(['id', 'email']);
         return response()->json($user, 200);
-
 
 
     }
