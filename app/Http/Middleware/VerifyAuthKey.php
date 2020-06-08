@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class IsLoggedIn
+class VerifyAuthKey
 {
     /**
      * Handle an incoming request.
