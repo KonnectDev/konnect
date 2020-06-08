@@ -32,22 +32,11 @@ class DatabaseSeeder extends Seeder
         $totalUsers = count($users) - 1;
         foreach ($users as $user) {
             //Get random user id's
-            while (in_array(($randomUser = mt_rand(0, $totalUsers)), array($user->id))) ;
-            while (in_array(($randomUser2 = mt_rand(0, $totalUsers)), array($user->id, $randomUser))) ;
-            while (in_array(($randomUser3 = mt_rand(0, $totalUsers)), array($user->id, $randomUser, $randomUser2))) ;
+            while (in_array(($randomUser = mt_rand(1, $totalUsers)), array($user->id))) ;
+            while (in_array(($randomUser2 = mt_rand(1, $totalUsers)), array($user->id, $randomUser))) ;
+            while (in_array(($randomUser3 = mt_rand(1, $totalUsers)), array($user->id, $randomUser, $randomUser2))) ;
 
-            UserFriendship::create([
-                'user_id' => $user->id,
-                'friend_id' => $randomUser,
-            ]);
-            UserFriendship::create([
-                'user_id' => $user->id,
-                'friend_id' => $randomUser2,
-            ]);
-            UserFriendship::create([
-                'user_id' => $user->id,
-                'friend_id' => $randomUser3,
-            ]);
+
             if ($i == 4) {
                 $i = 0;
                 //We want some friendrequests aswell.
@@ -60,6 +49,20 @@ class DatabaseSeeder extends Seeder
                     'friend_id' => $randomUser2,
                 ]);
                 UserFriendRequest::create([
+                    'user_id' => $user->id,
+                    'friend_id' => $randomUser3,
+                ]);
+            } else {
+                //Make friends
+                UserFriendship::create([
+                    'user_id' => $user->id,
+                    'friend_id' => $randomUser,
+                ]);
+                UserFriendship::create([
+                    'user_id' => $user->id,
+                    'friend_id' => $randomUser2,
+                ]);
+                UserFriendship::create([
                     'user_id' => $user->id,
                     'friend_id' => $randomUser3,
                 ]);
