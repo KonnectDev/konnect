@@ -12,30 +12,30 @@ class UserController extends Controller
     public function index()
     {
 
-        return User::all(['id', 'username', 'firstname', 'lastname', 'img_small']);
+        return User::all(['id', 'username', 'firstname', 'lastname', 'img_small', 'level']);
 
     }
 
     public function show($id)
     {
 
-        return User::find($id, ['username', 'firstname', 'lastname', 'img_medium', 'bio']);
+        return User::find($id, ['username', 'firstname', 'lastname', 'img_medium', 'bio', 'level']);
 
     }
 
     public function find($string)
     {
 
-        return User::where('username', 'LIKE', $string . '%')->get(['id', 'username', 'firstname', 'lastname', 'img_small']);
+        return User::where('username', 'LIKE', $string . '%')->get(['id', 'username', 'firstname', 'lastname', 'img_small', 'level']);
 
     }
 
     public function showDetailed($id, $string)
     {
-        if (in_array($string, ['username', 'firstname', 'lastname', 'img_medium', 'bio'])) {
+        if (in_array($string, ['username', 'firstname', 'lastname', 'img_medium', 'bio', 'level'])) {
             return User::find($id, [$string]);
         }
-        return User::find($id, ['username', 'firstname', 'lastname', 'img_medium', 'bio']);
+        return User::find($id, ['username', 'firstname', 'lastname', 'img_medium', 'bio', 'level']);
 
     }
 
