@@ -14,14 +14,4 @@ class Controller extends BaseController
 
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    protected function verifyAuthKey($userId, $authKey) {
-        if(DB::table('users')->where([
-            'id' => $userId,
-            'auth_key' => $authKey
-        ])->exists()) {
-           return true;
-        }
-        return false;
-    }
-
 }

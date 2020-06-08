@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\IsLoggedIn;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,9 +28,9 @@ Route::put('user/register', 'UserController@register');
 Route::post('user/password/forget', 'UserController@passwordRecovery');
 
 // api/user/friend
-Route::put('user/friend/add', 'UserFriendController@add');
-Route::delete('user/friend/delete', 'UserFriendController@delete');
-Route::put('user/friend/request/accept', 'UserFriendController@accept');
-Route::delete('user/friend/request/decline', 'UserFriendController@decline');
+Route::middleware([IsLoggedIn::class])->put('user/friend/add', 'UserFriendController@add');
+Route::middleware([IsLoggedIn::class])->delete('user/friend/delete', 'UserFriendController@delete');
+Route::middleware([IsLoggedIn::class])->put('user/friend/request/accept', 'UserFriendController@accept');
+Route::middleware([IsLoggedIn::class])->delete('user/friend/request/decline', 'UserFriendController@decline');
 
-Route::post('user/friends', 'UserFriendController@userFriends');
+Route::middleware([IsLoggedIn::class])->post('user/friends', 'UserFriendController@userFriends');

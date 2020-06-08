@@ -16,8 +16,8 @@ class UserFriendship extends Model
      */
     public $timestamps = false;
 
-        protected $fillable = [
-            'user_id',
-            'friend_id'
-        ];
+    protected $fillable = [
+        'user_id',
+        'friend_id'
+    ];
 }
