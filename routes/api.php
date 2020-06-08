@@ -33,4 +33,5 @@ Route::middleware([VerifyAuthKey::class])->delete('user/friend/delete', 'UserFri
 Route::middleware([VerifyAuthKey::class])->put('user/friend/request/accept', 'UserFriendController@accept');
 Route::middleware([VerifyAuthKey::class])->delete('user/friend/request/decline', 'UserFriendController@decline');
 
+//Must be get, but ain't working.
 Route::middleware([VerifyAuthKey::class])->post('user/friends', 'UserFriendController@userFriends');
