@@ -23,6 +23,13 @@ class UserController extends Controller
 
     }
 
+    public function find($string)
+    {
+
+        return User::where('username', 'LIKE', $string . '%')->get(['id', 'username', 'firstname', 'lastname', 'img_small']);
+
+    }
+
     public function showDetailed($id, $string)
     {
         if (in_array($string, ['username', 'firstname', 'lastname', 'img_medium', 'bio'])) {
