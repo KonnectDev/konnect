@@ -33,6 +33,7 @@ class Dashboard extends React.Component {
         };
     }
 
+
     getRoutes = routes => {
         return routes.map((prop, key) => {
             if (prop.layout === "/Dashboard") {
@@ -130,7 +131,14 @@ class Dashboard extends React.Component {
     }
 }
 
+const mapDispatchToProps = dispatch => {
+    return {
+        logout: () => dispatch(actions.logout())
+    }
+
+};
 
 
-export default withRouter(connect(null, null)(Dashboard));
+
+export default withRouter(connect(null, mapDispatchToProps)(Dashboard));
 

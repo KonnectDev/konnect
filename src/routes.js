@@ -5,6 +5,7 @@ import RegisterPage from "./views/RegisterPage";
 import Profile from "./views/Profile";
 import Feed from "./views/Feed";
 import LeaderboardPage from "./views/LeaderboardPage";
+import InviteFriendsPage from "./views/InviteFriendsPage";
 
 
 // Some folks find value in a centralized route config.
@@ -33,6 +34,12 @@ const routes = [
         component: LeaderboardPage,
         layout: "/Dashboard"
     },
+    {
+        path: "/invite-friends",
+        name: "Invite Friends",
+        component: InviteFriendsPage,
+        layout: "/Dashboard"
+    }
 
 ];
 

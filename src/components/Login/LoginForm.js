@@ -44,15 +44,6 @@ class LoginForm extends React.Component {
         const username = localStorage.getItem("username");
 
 
-        if (token && id && username === null){
-            this.props.history.push("/sign-in")
-        }
-        else {
-            this.props.history.push("/Dashboard")
-        }
-
-
-
     }
 
     componentDidMount() {
@@ -70,6 +61,13 @@ class LoginForm extends React.Component {
         if (this.props.error) {
             errorMessage = (
                 <p>{this.props.error.message}</p>
+            )
+        }
+
+        let DoesntMatchMessage = null;
+        if (this.props.message) {
+            DoesntMatchMessage = (
+                <p>{this.props.message}</p>
             )
         }
 
@@ -117,6 +115,7 @@ class LoginForm extends React.Component {
                                             />
                                             <a className="forgotPas" href="#">FORGOT
                                                 YOUR PASSWORD</a>
+                                            {DoesntMatchMessage}
                                         </div>
                                         <div className="formDiv">
                                             <button className="acceptBtn" type="submit">Login</button>
@@ -136,13 +135,15 @@ class LoginForm extends React.Component {
 const MapStateToProps = (state) => {
     return {
         loading: state.loading,
-        error: state.error
+        error: state.error,
+        message: state.message
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAuth: (username, password) => dispatch(actions.authLogin(username, password))
+        onAuth: (username, password) => dispatch(actions.authLogin(username, password)),
+        logout: () => dispatch(actions.logout())
     }
 };
 

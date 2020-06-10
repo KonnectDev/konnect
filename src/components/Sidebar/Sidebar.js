@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {BrowserRouter as Router, Route, Link, withRouter} from "react-router-dom";
+import {BrowserRouter as Router, Route, Link, withRouter, NavLink} from "react-router-dom";
 import API from "../../utils/API";
 import Invite from '../../assets/img/Invite.svg';
 import Search from "./Search";
@@ -48,6 +48,7 @@ export default class Sidebar extends React.Component {
             });
 
 
+
         this.updateDimensions();
         window.addEventListener("resize", this.updateDimensions.bind(this));
     }
@@ -73,7 +74,7 @@ export default class Sidebar extends React.Component {
             >
 
                 <div className="logo">
-                    <img src={logo} alt="logo_image" width="200px"/>
+                    <NavLink to=""><img src={logo} alt="logo_image" width="200px"/></NavLink>
                 </div>
                 <div className="sidebar-wrapper">
                     <ul className="nav">
@@ -82,7 +83,9 @@ export default class Sidebar extends React.Component {
                             Friends {this.state.friends === null ? "0" : this.state.friends.length}</p></div>
                         <div className="parent">
                             <div className="img">
+                                <NavLink to="/Dashboard/invite-friends">
                                 <img src={Invite}/>
+                                </NavLink>
                             </div>
                             <div className="text">
                                 <a >Invite Friends</a>
@@ -101,7 +104,7 @@ export default class Sidebar extends React.Component {
                                     this.state.friends.filter(friend => (friend.username.toLowerCase().includes(this.state.searchText.toLowerCase())))
                                         .map((friend, index) => (
                                             <ListitemFriend
-                                                src={friend.image}
+                                                src={friend.img_small}
                                                 username={friend.username}
                                                 level={friend.level}
                                                 koins={1003}
