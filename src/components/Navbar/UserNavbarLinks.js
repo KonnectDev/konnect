@@ -17,6 +17,7 @@ import {signOut} from 'react-icons-kit/fa/signOut';
 
 class UserNavbarLinks extends Component {
     render() {
+        const username = localStorage.getItem("username");
         return (
             <div>
                 <nav className="navbar navbar-inverse">
@@ -26,9 +27,10 @@ class UserNavbarLinks extends Component {
                             <li><NavLink to="/Dashboard/feed" style={{ color: '#dcddde' }}><Icon size={32} icon={home}/></NavLink></li>
                             <li><NavLink to="/Dashboard/leaderboard" style={{ color: '#dcddde' }}><Icon size={32} icon={trophy}/></NavLink></li>
                             <li><a href="#" style={{ color: '#dcddde' }}><Icon size={32} icon={group}/></a></li>
-                            <li><a href="#" style={{ color: '#dcddde' }}><Icon size={32} icon={gears}/></a></li>
+                            <li><NavLink to="/Dashboard/profile" style={{ color: '#dcddde' }}><Icon size={32} icon={gears}/></NavLink></li>
                             <li><a href="#" style={{ color: '#dcddde' }}><Icon size={32} icon={comments}/></a></li>
                             <li><NavLink to="/" onClick={this.props.loggingout} style={{ color: '#dcddde' }}><Icon size={32} icon={signOut}/></NavLink></li>
+                            <li style={{color : '#dcddde'}}>Welcome {username}</li>
                         </ul>
                         </div>
                      </div>

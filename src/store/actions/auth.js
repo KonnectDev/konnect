@@ -1,6 +1,7 @@
 import * as actionTypes from './actionsTypes';
 import axios from 'axios';
 import API from '../../utils/API';
+import {browserHistory} from '../../index';
 
 
 export const authStart = () => {
@@ -15,6 +16,13 @@ export const authSuccess = token => {
         token: token
     }
 };
+
+export const authDoesntMatch = message => {
+    return {
+        type: actionTypes.AUTH_DOESNT_MATCH,
+        message: message
+    }
+}
 
 export const authFail = error => {
     return {
@@ -50,17 +58,25 @@ export const authLogin = (username, password) => {
             password: password
         })
             .then(res => {
-                const token = res.data.auth_key;
-                const id = res.data.id;
-                const username = res.data.username;
-                console.log(res.data.username);
-                const expirationDate = new Date(new Date().getTime() + 86400 * 1000);
-                localStorage.setItem("token", token);
-                localStorage.setItem("expirationDate", expirationDate);
-                localStorage.setItem("id", id);
-                localStorage.setItem("username", username);
-                dispatch(checkAuthTimeout(86400));
-                dispatch(authSuccess(token));
+                if (res.data.auth_key !== undefined) {
+                    const token = res.data.auth_key;
+                    const id = res.data.id;
+                    const username = res.data.username;
+                    console.log(res.data.username);
+                    const expirationDate = new Date(new Date().getTime() + 86400 * 1000);
+                    localStorage.setItem("token", token);
+                    localStorage.setItem("expirationDate", expirationDate);
+                    localStorage.setItem("id", id);
+                    localStorage.setItem("username", username);
+                    dispatch(checkAuthTimeout(86400));
+                    dispatch(authSuccess(token));
+                    browserHistory.push('/Dashboard');
+                    window.location.reload()
+                }
+                else {
+                    let message = "Username or password doesnt match"
+                    dispatch(authDoesntMatch(message))
+                }
             })
             .catch(err => {
                 dispatch(authFail(err))

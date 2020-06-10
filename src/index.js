@@ -6,8 +6,12 @@ import App from "./App";
 import { createStore, compose, applyMiddleware } from "redux";
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import { createBrowserHistory } from 'history';
 
 import reducer from './store/reducers/auth';
+
+
+export const browserHistory = createBrowserHistory();
 
 const composeEnhances = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
