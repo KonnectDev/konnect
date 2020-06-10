@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 // api/users
 Route::get('users', 'UserController@index');
+Route::get('users/{string}', 'UserController@find');
+
 
 // api/user
 Route::get('user/{id}', 'UserController@show');
