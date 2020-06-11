@@ -86,7 +86,7 @@ class UserFriendController extends Controller
     {
 
 
-        $userFriendRequests = UserFriendRequest::where('users.id', '!=', $request['user_id'])->where('user_id', '=', $request['user_id'])->orWhere('friend_id', '=', $request['user_id'])
+        $userFriendRequests = UserFriendRequest::where('friend_id', '=', $request['user_id'])
             ->join('users', function ($join) {
                 $join->on('users.id', '=', 'user_friendrequests.friend_id')->orOn('users.id', '=', 'user_friendrequests.user_id');
             })
