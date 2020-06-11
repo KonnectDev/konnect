@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import {NavLink} from 'react-router-dom';
-import { NavItem, Nav, NavDropdown, DropdownItem} from "react-bootstrap";
+import {NavItem, Nav, NavDropdown, DropdownItem} from "react-bootstrap";
 import HomeIcon from '@material-ui/icons/Home';
 import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ChatIcon from '@material-ui/icons/Chat';
-import { Icon } from 'react-icons-kit';
+import {Icon} from 'react-icons-kit';
 import {home} from 'react-icons-kit/fa/home';
 import {trophy} from 'react-icons-kit/fa/trophy';
 import {group} from 'react-icons-kit/fa/group';
@@ -14,9 +14,8 @@ import {comments} from 'react-icons-kit/fa/comments';
 import {signOut} from 'react-icons-kit/fa/signOut';
 import {bell} from 'react-icons-kit/fa/bell';
 import profile from '../../assets/img/face-3.jpg';
-import {plus} from 'react-icons-kit/fa/plus';
-
-
+import {plus} from 'react-icons-kit/iconic/plus'
+import "../../assets/css/Navbar.scss";
 
 
 class UserNavbarLinks extends Component {
@@ -24,38 +23,54 @@ class UserNavbarLinks extends Component {
         const username = localStorage.getItem("username");
         return (
 
-                <nav className="navbar navbar-inverse" style={{width: '100%'}}>
-                    <div className="container-fluid">
-                        <div className="navbar-header">
+            <nav className="navbar navbar-inverse" style={{width: '100%'}}>
+                <div className="container-fluid">
+                    <div className="navbar-header">
                         <ul className="nav navbar-nav">
-                            <li><NavLink to="/Dashboard/feed" style={{ color: '#dcddde' }}><Icon size={26} icon={home}/></NavLink></li>
-                            <li><NavLink to="/Dashboard/leaderboard" style={{ color: '#dcddde' }}><Icon size={26} icon={trophy}/></NavLink></li>
-                            <li><a href="#" style={{ color: '#dcddde' }}><Icon size={26} icon={group}/></a></li>
-                            <li><NavLink to="/Dashboard/profile" style={{ color: '#dcddde' }}><Icon size={26} icon={gears}/></NavLink></li>
-                            <li><a href="#" style={{ color: '#dcddde' }}><Icon size={26} icon={comments}/></a></li>
+                            <li><NavLink to="/Dashboard/feed" style={{color: '#dcddde'}}><Icon size={30}
+                                                                                               icon={home}/></NavLink>
+                            </li>
+                            <li><NavLink to="/Dashboard/leaderboard" style={{color: '#dcddde'}}><Icon size={30}
+                                                                                                      icon={trophy}/></NavLink>
+                            </li>
+                            <li><a href="#" style={{color: '#dcddde'}}><Icon size={30} icon={group}/></a></li>
+                            <li><NavLink to="/Dashboard/profile" style={{color: '#dcddde'}}><Icon size={30}
+                                                                                                  icon={gears}/></NavLink>
+                            </li>
+                            <li><a href="#" style={{color: '#dcddde'}}><Icon size={30} icon={comments}/></a></li>
+                            <li><NavLink to="/" onClick={this.props.loggingout} style={{color: '#dcddde'}}><Icon
+                                size={30} icon={signOut}/></NavLink></li>
 
 
                         </ul>
-
-                        </div>
-                        <div className="navbar-header justify-content-end">
-                            <ul className="nav navbar-nav ">
-                                <li><p>6969</p></li>
-                                <li><a href="#" style={{ color: '#dcddde'}}><Icon size={26} icon={plus}/></a></li>
-                                <li><img src={profile} style={{width: "50%" , float: "right" , paddingRight: "10px"}}/></li>
-                                <li><p>Emilia<br/>
-                                Level 69</p></li>
-                                <li><a href="#" style={{ color: '#dcddde' }}><Icon size={26} icon={bell}/></a></li>
-                                <li><NavLink to="/" onClick={this.props.loggingout} style={{ color: '#dcddde' }}><Icon size={26} icon={signOut}/></NavLink></li>
-                            </ul>
-
-                        </div>
-                     </div>
-                </nav>
+                    </div>
+                    <div className="navbar-header justify-content-end">
+                        <ul className="nav navbar-nav ">
+                            <li><p style={{
+                                color: '#dcddde',
+                                fontSize: "20px",
+                                lineHeight: "45px",
+                                margin: "0",
+                                padding: "0"
+                            }}>1234</p></li>
+                            <li><a href="#" style={{color: '#dcddde', fontSize: "26px"}}><Icon size={30}
+                                                                                               icon={plus}/></a></li>
+                            <li style={{width: "45px", margin: "0px 5px"}}><img src={profile} style={{width: "100%"}}/>
+                            </li>
+                            <li>
+                                <span style={{display: "block", fontSize: "14px", color: "#dcddde"}}>Obama Obama</span>
+                                <span style={{display: "block", fontSize: "14px", color: "#dcddde"}}>Lvl 50</span>
+                            </li>
+                            <li><a href="#" style={{color: '#dcddde', fontSize: "26px"}}><Icon size={30}
+                                                                                               icon={bell}/></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
 
         );
-    }K
-}K
+    }
+}
 
 
 export default UserNavbarLinks;
