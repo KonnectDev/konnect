@@ -93,15 +93,20 @@ export const authSignup = (username, email, password) => {
             password: password,
         })
             .then(res => {
-                const token = res.data.auth_key;
-                const id = res.data.id;
-                const expirationDate = new Date(new Date().getTime() + 86400 * 1000);
-                localStorage.setItem('token', token);
-                localStorage.setItem('expirationDate', expirationDate);
-                localStorage.setItem('id', id);
-                localStorage.setItem('username', username);
-                dispatch(authSuccess(token));
-                dispatch(checkAuthTimeout(86400));
+                if (res.data.auth_key !== undefined) {
+                    const token = res.data.auth_key;
+                    const id = res.data.id;
+                    const expirationDate = new Date(new Date().getTime() + 86400 * 1000);
+                    localStorage.setItem('token', token);
+                    localStorage.setItem('expirationDate', expirationDate);
+                    localStorage.setItem('id', id);
+                    localStorage.setItem('username', username);
+                    dispatch(authSuccess(token));
+                    dispatch(checkAuthTimeout(86400));
+                }else {
+                    let message = "Username or password doesnt match"
+                    dispatch(authDoesntMatch(message))
+                }
             })
             .catch(err => {
                 dispatch(authFail(err));

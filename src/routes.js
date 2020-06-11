@@ -34,12 +34,6 @@ const routes = [
         component: LeaderboardPage,
         layout: "/Dashboard"
     },
-    {
-        path: "/invite-friends",
-        name: "Invite Friends",
-        component: InviteFriendsPage,
-        layout: "/Dashboard"
-    }
 
 ];
 
