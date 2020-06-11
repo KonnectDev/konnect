@@ -90,7 +90,7 @@ class UserFriendController extends Controller
             ->join('users', function ($join) {
                 $join->on('users.id', '=', 'user_friendrequests.friend_id')->orOn('users.id', '=', 'user_friendrequests.user_id');
             })
-            ->where('users.id', '!=', $request['user_id'])
+            ->where('users.id', '!=', $request['user_id'])->distinct('users.id')
             ->get(['users.id', 'users.username', 'users.img_small']);
 
 
