@@ -4,11 +4,14 @@ import {BrowserRouter as Router, Route, Link, withRouter, NavLink} from "react-r
 import API from "../../utils/API";
 import Invite from '../../assets/img/Invite.svg';
 import Search from "./Search";
-import {ListitemFriend, ListitemGuild} from "./Listitem";
+import {ListitemFriend, ListitemGuild, ListitemRequest} from "./Listitem";
 import List from "@material-ui/core/List";
 import SearchGuild from "./SearchGuild";
 import UserNavbarLinks from "../Navbar/UserNavbarLinks";
 import logo from '../../assets/img/Konnect-logo-text.svg'
+import Modal, {closeStyle} from 'simple-react-modal'
+import InviteFriends from "../InviteFriends/InviteFriends";
+
 
 
 export default class Sidebar extends React.Component {
@@ -19,6 +22,7 @@ export default class Sidebar extends React.Component {
         this.state = {
             friends: [],
             guild: [],
+            friendRequests: [],
             searchText: '',
             searchGuild: '',
             width: window.innerWidth,
@@ -39,7 +43,6 @@ export default class Sidebar extends React.Component {
         API
             .post(`user/friends?user_id=${id}&auth_key=${auth_key}`)
             .then(response => {
-                console.log(response);
                 this.setState({friends: response.data});
                 console.log(this.state.friends)
             })
@@ -47,6 +50,15 @@ export default class Sidebar extends React.Component {
                 console.log(err);
             });
 
+        API
+            .post(`user/friends/requests?user_id=${id}&auth_key=${auth_key}`)
+            .then(response => {
+                console.log(response.data);
+                this.setState({friendRequests: response.data})
+            })
+            .catch(err => {
+                console.log(err)
+            });
 
 
         this.updateDimensions();
@@ -62,8 +74,17 @@ export default class Sidebar extends React.Component {
         this.setState({searchGuild: res});
     };
 
+    show() {
+        this.setState({show: true})
+    }
+
+    close() {
+        this.setState({show: false})
+    }
+
 
     render() {
+
         return (
             <div
                 id="sidebar"
@@ -83,15 +104,26 @@ export default class Sidebar extends React.Component {
                             Friends {this.state.friends === null ? "0" : this.state.friends.length}</p></div>
                         <div className="parent">
                             <div className="img">
-                                <NavLink to="/Dashboard/invite-friends">
-                                <img src={Invite}/>
-                                </NavLink>
+                                <img src={Invite} onClick={this.show.bind(this)}/>
                             </div>
                             <div className="text">
-                                <a >Invite Friends</a>
+                                <a>Add Friend</a>
 
                             </div>
                         </div>
+                        <Modal
+                            style={{color: "black"}}
+                            containerStyle={{background: '#26262b;'}} //changes styling on the inner content area
+                            closeOnOuterClick={true}
+                            show={this.state.show}
+                            onClose={this.close.bind(this)}
+
+                        >
+
+                            <a style={closeStyle} onClick={this.close.bind(this)}>X</a>
+                            <InviteFriends/>
+
+                        </Modal>
                         <Search searchText={this.searchText}/>
                         <List>
                             {
@@ -110,6 +142,19 @@ export default class Sidebar extends React.Component {
                                                 koins={1003}
                                             />
                                         ))
+                            }
+                        </List>
+                        <div className="Online"><p>Friend Requests ({this.state.friendRequests.length})</p></div>
+                        <List>
+                            {
+
+                                this.state.friendRequests
+                                    .map((request, index) => (
+                                        <ListitemRequest
+                                            src={request.img_small}
+                                            username={request.username}
+                                        />
+                                    ))
                             }
                         </List>
                         <div className="Online"><p>Guild Members ({this.state.guild.length})</p></div>
