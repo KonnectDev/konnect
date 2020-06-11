@@ -10,6 +10,8 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import Switch from "@material-ui/core/Switch";
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Badge from "@material-ui/core/Badge";
+import IconButton from "@material-ui/core/IconButton";
+import SendIcon from '@material-ui/icons/Send';
 
 
 
@@ -79,28 +81,6 @@ class ListitemFriend extends React.Component {
                     />
                 </ListItem>
 
-            {/*<ListItem alignItems="flex-start">*/}
-            {/*    <ListItemAvatar>*/}
-            {/*        <Avatar alt={this.props.alt} src={this.props.src} variant="square"/>*/}
-            {/*    </ListItemAvatar>*/}
-            {/*    <ListItemText*/}
-            {/*        style={{color: "#dcddde"}}*/}
-            {/*        primary={this.props.username}*/}
-            {/*        secondary={*/}
-            {/*            <React.Fragment>*/}
-            {/*                <Typography*/}
-            {/*                    component="span"*/}
-            {/*                    variant="body2"*/}
-            {/*                    className={"inline"}*/}
-            {/*                    style={{color: "#dcddde"}}*/}
-            {/*                >*/}
-            {/*                    Level {this.props.level}*/}
-            {/*                </Typography>*/}
-            {/*            </React.Fragment>*/}
-            {/*        }*/}
-            {/*    />*/}
-            {/*</ListItem>*/}
-
             </React.Fragment>
         );
     }
@@ -147,4 +127,40 @@ class ListitemGuild extends React.Component {
     }
 }
 
-export { ListitemFriend, ListitemGuild};
+
+
+class ListitemRequest extends React.Component {
+
+    render() {
+        return (
+            <React.Fragment>
+                <ListItem alignItems="flex-start">
+                    <ListItemAvatar>
+                        <StyledBadge
+                            overlap="circle"
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'right',
+                            }}
+                            variant="dot"
+                        >
+                            <Avatar alt="" src={this.props.src}/>
+                        </StyledBadge>
+                    </ListItemAvatar>
+                    <ListItemText
+                        style={{color: "#dcddde"}}
+                        primary={this.props.username}
+                        secondary={
+                            <React.Fragment>
+                                <IconButton />
+                            </React.Fragment>
+                        }
+                    />
+                </ListItem>
+
+            </React.Fragment>
+        );
+    }
+}
+
+export { ListitemFriend, ListitemGuild, ListitemRequest};
