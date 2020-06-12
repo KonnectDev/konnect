@@ -79,6 +79,18 @@ div.img img{
     vertical-align:middle;
 }
 
+.button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: #343a40;
+}
 
 
 

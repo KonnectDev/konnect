@@ -11,7 +11,9 @@ import Switch from "@material-ui/core/Switch";
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Badge from "@material-ui/core/Badge";
 import IconButton from "@material-ui/core/IconButton";
-import SendIcon from '@material-ui/icons/Send';
+import ClearIcon from '@material-ui/icons/Clear';
+import CheckIcon from '@material-ui/icons/Check';
+import API from "../../utils/API";
 
 
 
@@ -87,6 +89,11 @@ class ListitemFriend extends React.Component {
 }
 
 class ListitemGuild extends React.Component {
+
+
+    acceptFriend(id, username, account_id, auth_key) {
+
+    }
     render() {
 
         return (
@@ -131,32 +138,52 @@ class ListitemGuild extends React.Component {
 
 class ListitemRequest extends React.Component {
 
+    acceptFriend(id, username, account_id, auth_key) {
+        console.log(id, auth_key, username, account_id);
+        API.put(`user/friend/request/accept?user_id=${account_id}&auth_key=${auth_key}&friend_id=${id}`)
+            .then(res => {
+                console.log(res.data.user_id, res.data.friend_id, res.data.id)
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
     render() {
         return (
             <React.Fragment>
                 <ListItem alignItems="flex-start">
-                    <ListItemAvatar>
-                        <StyledBadge
-                            overlap="circle"
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'right',
-                            }}
-                            variant="dot"
+                <ListItemAvatar>
+                    <StyledBadge
+                        overlap="circle"
+                        anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'right',
+                        }}
+                        variant="dot"
+                    >
+                        <Avatar alt="" src={this.props.src}/>
+                    </StyledBadge>
+                </ListItemAvatar>
+                <ListItemText
+                    style={{color: "#dcddde"}}
+                    primary={this.props.username}
+                    secondary={
+                        <Typography
+                            component="span"
+                            variant="body2"
+                            color="textPrimary"
                         >
-                            <Avatar alt="" src={this.props.src}/>
-                        </StyledBadge>
-                    </ListItemAvatar>
-                    <ListItemText
-                        style={{color: "#dcddde"}}
-                        primary={this.props.username}
-                        secondary={
-                            <React.Fragment>
-                                <IconButton />
-                            </React.Fragment>
-                        }
-                    />
-                </ListItem>
+                            <button className="button" onClick={() => this.acceptFriend(this.props.id, this.props.username, localStorage.getItem("id"), localStorage.getItem("token"))}>
+                                <CheckIcon fontSize="small" style={{color: "green"}}/>
+                            </button>
+                            <button  className="button" onClick={() => this.declineFriend(this.props.id, this.props.username, localStorage.getItem("id"), localStorage.getItem("token"))}>
+                                <ClearIcon fontSize="small" style={{color: "red"}}/>
+                            </button>
+                        </Typography>
+                    }
+                />
+            </ListItem>
 
             </React.Fragment>
         );

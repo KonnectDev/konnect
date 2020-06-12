@@ -153,6 +153,7 @@ export default class Sidebar extends React.Component {
                                         <ListitemRequest
                                             src={request.img_small}
                                             username={request.username}
+                                            id={request.id}
                                         />
                                     ))
                             }

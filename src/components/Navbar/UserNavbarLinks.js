@@ -56,7 +56,7 @@ class UserNavbarLinks extends Component {
                             <li style={{width: "45px", margin: "0px 5px"}}><img src={profile} style={{width: "100%"}}/>
                             </li>
                             <li>
-                                <span style={{display: "block", fontSize: "14px", color: "#dcddde"}}>Obama Obama</span>
+                                <span style={{display: "block", fontSize: "14px", color: "#dcddde"}}>{localStorage.getItem("username")}</span>
                                 <span style={{display: "block", fontSize: "14px", color: "#dcddde"}}>Lvl 50</span>
                             </li>
                             <li><a href="#" style={{color: '#dcddde', fontSize: "26px"}}><Icon size={22}
