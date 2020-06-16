@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use App\PasswordRecovery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -68,14 +67,4 @@ class UserController extends Controller
 
     }
 
-    public function passwordRecovery(Request $request)
-    {
-        //@todo jake finish function
-        $user = DB::table('users')->where([
-            'email' => $request['email']
-        ])->first(['id', 'email']);
-        return response()->json($user, 200);
-
-
-    }
 }

@@ -21,7 +21,6 @@ class UserFriendController extends Controller
         $friendRequest->save();
         return response()->json($friendRequest, 200);
 
-
     }
 
     public function delete(Request $request)
