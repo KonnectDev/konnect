@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { createBrowserHistory } from 'history';
 
-import reducer from './store/reducers/auth';
+import reducer from './store/reducers/all';
 
 
 export const browserHistory = createBrowserHistory();
@@ -21,9 +21,11 @@ const store = createStore(reducer, composeEnhances(
 
 const app = (
     <Provider store={store}>
-        <App />
+        <App/>
     </Provider>
-)
+);
+
+debugger;
 
 ReactDOM.render(app, document.getElementById('root'));
 

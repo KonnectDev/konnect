@@ -1,23 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+      <style>
+          .svgLoader {
+              animation: spin 0.5s linear infinite;
+              margin: auto;
+          }
 
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+          .divLoader {
+              width: 100vw;
+              height: 100vh;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+          }
+
+          @keyframes spin {
+              0% {
+                  transform: rotate(0deg);
+              }
+              100% {
+                  transform: rotate(360deg);
+              }
+          }
+
+
+      </style>
+      <meta charset="utf-8"/>
+      <link rel="icon" href="%PUBLIC_URL%/favicon.ico"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <meta name="theme-color" content="#000000"/>
+      <meta
+          name="description"
+          content="Web site created using create-react-app"
+      />
+      <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png"/>
+
+      <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
     <title>Konnect</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root">
+      <div class="divLoader">
+          <svg class="animate-svg" fill="none" height="249" viewBox="0 0 1040 1049" width="240"
+               xmlns="http://www.w3.org/2000/svg">
+              <path clip-rule="evenodd"
+                    d="M641 0L330 523V525L640 1049H734L1040 525V523L732 0H641ZM420 523L687 75L954 523V525L687 976L420 525V523Z"
+                    fill="#44D62C" fill-rule="evenodd"
+                    style="stroke-dasharray: 4715.35; stroke-dashoffset: 4715.35; animation-delay: 0s; animation-duration: 4.47s;"></path>
+              <path clip-rule="evenodd"
+                    d="M471 0L160 524V525L470 1049H564L874 525V524L563 0H471ZM250 524L517 75.5L784 524L517 975L250 524Z"
+                    fill="#44D62C" fill-rule="evenodd"
+                    style="stroke-dasharray: 4716.48; stroke-dashoffset: 4716.48; animation-delay: 0.333333s; animation-duration: 4.47066s;"></path>
+              <path clip-rule="evenodd"
+                    d="M306 0L0 525V526L306 1049H400L710 525V523L399 0H306ZM86 523L353 75L620 523V525L353 976L86 525V523Z"
+                    fill="#44D62C" fill-rule="evenodd"
+                    style="stroke-dasharray: 4716.2; stroke-dashoffset: 4716.2; animation-delay: 0.666667s; animation-duration: 4.47049s;"></path>
+          </svg>
+      </div>
+  </div>
   </body>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
 </html>

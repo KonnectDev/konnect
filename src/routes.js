@@ -2,10 +2,11 @@ import React from "react";
 import Homepage from "./views/Homepage";
 import Dashboard from "./views/Dashboard";
 import RegisterPage from "./views/RegisterPage";
-import Profile from "./views/Profile";
 import Feed from "./views/Feed";
 import LeaderboardPage from "./views/LeaderboardPage";
 import InviteFriendsPage from "./views/InviteFriendsPage";
+import Settings from "./views/SettingsPage";
+import ProfilePage from "./views/ProfilePage";
 
 
 // Some folks find value in a centralized route config.
@@ -25,7 +26,7 @@ const routes = [
     {
         path: "/profile",
         name: "Profile",
-        component: Profile,
+        component: ProfilePage,
         layout: "/Dashboard"
     },
     {
@@ -34,6 +35,12 @@ const routes = [
         component: LeaderboardPage,
         layout: "/Dashboard"
     },
+    {
+        path: "/settings",
+        name: "Settings",
+        component: Settings,
+        layout: "/Dashboard"
+    }
 
 ];
 

@@ -63,6 +63,7 @@
         "react-scripts": "3.4.1",
         "react-search-box": "^2.0.2",
         "react-select": "^3.1.0",
+        "react-settings-pane": "^0.1.5",
         "react-toggle": "^4.1.1",
         "reactstrap": "^8.4.1",
         "redux": "^4.0.5",

@@ -1,11 +1,10 @@
 import React from "react";
-import { Link, NavLink, withRouter, Switch, Route } from "react-router-dom";
+import {Link, NavLink, withRouter, Switch, Route, Redirect} from "react-router-dom";
 import UserNavbar from '../components/Navbar/UserNavbar';
 import { connect } from "react-redux";
 import * as actions from '../store/actions/auth';
 import '../assets/css/Dashboard.scss';
 import Sidebar from "../components/Sidebar/Sidebar";
-import Profile from "./Profile";
 import LeaderboardPage from "./LeaderboardPage";
 import Error from "../404";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -113,7 +112,10 @@ class Dashboard extends React.Component {
                         {...this.props}
                         brandText={this.getBrandText(this.props.location.pathname)}
                     />
-                    <Switch>{this.getRoutes(routes)}</Switch>
+                    <Switch>{this.getRoutes(routes)}
+                        <Redirect from="/Dashboard" to="/Dashboard/feed"/>
+
+                    </Switch>
                     <FixedPlugin
                         handleImageClick={this.handleImageClick}
                         handleColorClick={this.handleColorClick}

@@ -1,17 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
-import {BrowserRouter as Router, Route, Link, withRouter, NavLink} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import API from "../../utils/API";
 import Invite from '../../assets/img/Invite.svg';
 import Search from "./Search";
-import {ListitemFriend, ListitemGuild, ListitemRequest} from "./Listitem";
+import ListitemRequest from "./ListitemRequest";
 import List from "@material-ui/core/List";
-import SearchGuild from "./SearchGuild";
 import UserNavbarLinks from "../Navbar/UserNavbarLinks";
 import logo from '../../assets/img/Konnect-logo-text.svg'
 import Modal, {closeStyle} from 'simple-react-modal'
 import InviteFriends from "../InviteFriends/InviteFriends";
-
+import ListitemGuild from "./ListItemGuild";
+import ListitemFriend from "./ListItemFriend";
 
 
 export default class Sidebar extends React.Component {

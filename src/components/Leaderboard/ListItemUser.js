@@ -7,8 +7,8 @@ class ListItemUser extends React.Component {
 
         return (
                 <tr>
-                    <th scope="row">{count+=1}.</th>
-                    <td><img src={this.props.image}/></td>
+                    <th scope="row">{count += 1}.</th>
+                    <td><img src={this.props.image} style={{width: "50px"}}/></td>
                     <td>{this.props.username}</td>
                     <td>{this.props.koins}</td>
                     <td>{this.props.lvl}</td>

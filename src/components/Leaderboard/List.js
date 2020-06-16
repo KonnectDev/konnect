@@ -1,29 +1,17 @@
 import React from "react";
-import {ListitemFriend} from "../Sidebar/Listitem";
+import {ListitemFriend} from "../Sidebar/ListitemRequest";
 import API from "../../utils/API";
 import ListItemUser from "./ListItemUser";
 import image from '../../assets/img/face-3.jpg';
 
+let count = 0;
 
 class List extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            users: [
-                {
-                    username: "Henk",
-                    image: image,
-                    koins: 50,
-                    lvl: 50,
-                },
-                {
-                    username: "Jan",
-                    image: image,
-                    koins: 10,
-                    level: 70,
-                },
-            ],
+            users: [],
         }
     }
 
@@ -32,15 +20,15 @@ class List extends React.Component {
         const id = localStorage.getItem("id");
         const auth_key = localStorage.getItem("token");
 
-        // API
-        //     .post(`users`)
-        //     .then(response => {
-        //         console.log(response);
-        //         this.setState({users: response.data});
-        //     })
-        //     .catch(err => {
-        //         console.log(err);
-        //     });
+        API
+            .get(`users`)
+            .then(response => {
+                console.log(response);
+                this.setState({users: response.data});
+            })
+            .catch(err => {
+                console.log(err);
+            });
 
     }
 
@@ -61,12 +49,13 @@ class List extends React.Component {
                     <tbody>
                     {
                         this.state.users.slice(0, this.props.max).map((user, index) => (
-                            <ListItemUser
-                                username={user.username}
-                                image={user.image}
-                                koins={user.koins}
-                                lvl={user.level}
-                            />
+                            <tr>
+                                <th scope="row">{count += 1}.</th>
+                                <td><img src={user.img_small} style={{width: "50px"}}/></td>
+                                <td>{user.username}</td>
+                                <td>{user.koins}</td>
+                                <td>{user.level}</td>
+                            </tr>
                         ))
                     }
                     </tbody>

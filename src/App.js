@@ -10,13 +10,17 @@ import Dashboard from "./views/Dashboard";
 import LoginPage from "./views/LoginPage";
 import RegisterPage from "./views/RegisterPage";
 import LeaderboardPage from "./views/LeaderboardPage";
-
+import {FingerprintSpinner} from "react-epic-spinners";
 
 
 class App extends React.Component {
 
     componentDidMount() {
         this.props.onTryAutoSignup();
+    }
+
+    componentWillMount() {
+
     }
 
     render() {

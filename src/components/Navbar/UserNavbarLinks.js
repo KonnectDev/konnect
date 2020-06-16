@@ -12,9 +12,29 @@ import profile from '../../assets/img/face-3.jpg';
 import {plus} from 'react-icons-kit/iconic/plus'
 import "../../assets/css/Navbar.scss";
 import koin from '../../assets/img/Konnect_koin.svg';
+import API from "../../utils/API";
 
 
 class UserNavbarLinks extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: []
+        }
+    }
+
+    componentDidMount() {
+        API.get(`http://35.187.9.64/public/api/user/${localStorage.getItem('id')}`)
+            .then(res => {
+                console.log(res);
+                this.setState({user: res.data});
+                console.log(this.state)
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
     render() {
         const username = localStorage.getItem("username");
         return (
@@ -29,11 +49,13 @@ class UserNavbarLinks extends Component {
                             <li><NavLink to="/Dashboard/leaderboard" style={{color: '#dcddde'}}><Icon size={26}
                                                                                                       icon={trophy}/></NavLink>
                             </li>
-                            <li><a href="#" style={{color: '#dcddde'}}><Icon size={30} icon={group}/></a></li>
-                            <li><NavLink to="/Dashboard/profile" style={{color: '#dcddde'}}><Icon size={26}
-                                                                                                  icon={gears}/></NavLink>
+                            <li><NavLink to="/Dashboard/guild" style={{color: '#dcddde'}}><Icon size={30} icon={group}/></NavLink>
                             </li>
-                            <li><a href="#" style={{color: '#dcddde'}}><Icon size={30} icon={comments}/></a></li>
+                            <li><NavLink to="/Dashboard/settings" style={{color: '#dcddde'}}><Icon size={26}
+                                                                                                   icon={gears}/></NavLink>
+                            </li>
+                            <li><NavLink to="messages" style={{color: '#dcddde'}}><Icon size={30}
+                                                                                        icon={comments}/></NavLink></li>
                             <li><NavLink to="/" onClick={this.props.loggingout} style={{color: '#dcddde'}}><Icon
                                 size={26} icon={signOut}/></NavLink></li>
 
@@ -50,14 +72,23 @@ class UserNavbarLinks extends Component {
                                 lineHeight: "45px",
                                 margin: "0",
                                 padding: "0"
-                            }}>1234</p></li>
+                            }}>{this.state.user.koins}</p></li>
                             <li><a href="#" style={{color: '#dcddde', fontSize: "26px"}}><Icon size={22}
                                                                                                icon={plus}/></a></li>
-                            <li style={{width: "45px", margin: "0px 5px"}}><img src={profile} style={{width: "100%"}}/>
-                            </li>
+                            <NavLink to="/Dashboard/profile" style={{width: "45px", margin: "0px 5px"}}><img
+                                src={this.state.user.img_medium} style={{width: "100%"}}/>
+                            </NavLink>
                             <li>
-                                <span style={{display: "block", fontSize: "14px", color: "#dcddde"}}>{localStorage.getItem("username")}</span>
-                                <span style={{display: "block", fontSize: "14px", color: "#dcddde"}}>Lvl 50</span>
+                                <span style={{
+                                    display: "block",
+                                    fontSize: "14px",
+                                    color: "#dcddde"
+                                }}>{localStorage.getItem("username")}</span>
+                                <span style={{
+                                    display: "block",
+                                    fontSize: "14px",
+                                    color: "#dcddde"
+                                }}>{this.state.user.level}</span>
                             </li>
                             <li><a href="#" style={{color: '#dcddde', fontSize: "26px"}}><Icon size={22}
                                                                                                icon={bell}/></a></li>
