@@ -11,16 +11,16 @@ class UserController extends Controller
     public function index()
     {
 
-        return User::all(['id', 'username', 'firstname', 'lastname', 'img_small', 'level']);
+        return User::all(['id', 'username', 'firstname', 'lastname', 'img_small', 'level', 'koins']);
 
     }
 
     public function show($id)
     {
         if (is_numeric($id)) {
-            $user = User::find($id, ['username', 'firstname', 'lastname', 'img_medium', 'bio', 'level']);
+            $user = User::find($id, ['username', 'firstname', 'lastname', 'img_medium', 'bio', 'level', 'koins']);
         } else {
-            $user = User::where('username', $id)->first(['username', 'firstname', 'lastname', 'img_medium', 'bio', 'level']);
+            $user = User::where('username', $id)->first(['username', 'firstname', 'lastname', 'img_medium', 'bio', 'level', 'koins']);
         }
         if ($user) {
             return $user;
@@ -32,16 +32,16 @@ class UserController extends Controller
     public function find($string)
     {
 
-        return User::where('username', 'LIKE', $string . '%')->get(['id', 'username', 'firstname', 'lastname', 'img_small', 'level']);
+        return User::where('username', 'LIKE', $string . '%')->get(['id', 'username', 'firstname', 'lastname', 'img_small', 'level', 'koins']);
 
     }
 
     public function showDetailed($id, $string)
     {
-        if (in_array($string, ['username', 'firstname', 'lastname', 'img_medium', 'bio', 'level'])) {
+        if (in_array($string, ['username', 'firstname', 'lastname', 'img_medium', 'bio', 'level', 'koins'])) {
             return User::find($id, [$string]);
         }
-        return User::find($id, ['username', 'firstname', 'lastname', 'img_medium', 'bio', 'level']);
+        return User::find($id, ['username', 'firstname', 'lastname', 'img_medium', 'bio', 'level','koins']);
 
     }
 
