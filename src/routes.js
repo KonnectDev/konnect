@@ -24,13 +24,13 @@ const routes = [
         layout: "/Dashboard"
     },
     {
-        path: "/profile",
+        path: "/profile/:username",
         name: "Profile",
         component: ProfilePage,
         layout: "/Dashboard"
     },
     {
-        path: "/profile/:userName",
+        path: "/profile",
         name: "Profile",
         component: ProfilePage,
         layout: "/Dashboard"
