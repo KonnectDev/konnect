@@ -30,6 +30,12 @@ const routes = [
         layout: "/Dashboard"
     },
     {
+        path: "/profile/:userName",
+        name: "Profile",
+        component: ProfilePage,
+        layout: "/Dashboard"
+    },
+    {
         path: "/leaderboard",
         name: "Leaderboard",
         component: LeaderboardPage,

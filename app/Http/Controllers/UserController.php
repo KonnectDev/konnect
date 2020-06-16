@@ -18,8 +18,14 @@ class UserController extends Controller
 
     public function show($id)
     {
-
-        return User::find($id, ['username', 'firstname', 'lastname', 'img_medium', 'bio', 'level']);
+        if(is_numeric($id)) {
+            $user = User::find($id, ['username', 'firstname', 'lastname', 'img_medium', 'bio', 'level']);
+        }
+        $user = User::where('username', $id)->first(['username', 'firstname', 'lastname', 'img_medium', 'bio', 'level']);
+        if($user) {
+            return $user;
+        }
+        return ['User not found'];
 
     }
 
