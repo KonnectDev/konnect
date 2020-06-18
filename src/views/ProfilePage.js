@@ -35,6 +35,9 @@ class ProfilePage extends React.Component {
             <div>
                 <h1>{this.state.user.username}</h1>
                 <p>{this.state.user.bio}</p>
+                <p>{this.state.user.img_medium}</p>
+                <p>{this.state.user.level}</p>
+                <p>{this.state.user.koins}</p>
             </div>
         );
     }

@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use App\UserFriendRequest;
 use App\UserFriendship;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 
 class UserFriendController extends Controller
@@ -63,12 +61,6 @@ class UserFriendController extends Controller
 
     public function userFriends(Request $request)
     {
-
-//            if ($request['show'] == 'online') {
-//                return [];
-//            } else if ($request['show'] == 'offline') {
-//                return [];
-//            } else {
 
         $userFriends = UserFriendship::where('users.id', '!=', $request['user_id'])->where('user_id', '=', $request['user_id'])->orWhere('friend_id', '=', $request['user_id'])
             ->join('users', function ($join) {

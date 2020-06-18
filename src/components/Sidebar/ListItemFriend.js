@@ -6,6 +6,9 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Typography from "@material-ui/core/Typography";
 import {withStyles} from "@material-ui/core/styles";
 import Badge from "@material-ui/core/Badge";
+import CheckIcon from "@material-ui/icons/Check";
+import ClearIcon from "@material-ui/icons/Clear";
+import API from "../../utils/API";
 
 
 const StyledBadge = withStyles((theme) => ({
@@ -40,6 +43,17 @@ const StyledBadge = withStyles((theme) => ({
 
 class ListitemFriend extends React.Component {
 
+    removeFriend(id, username, account_id, auth_key) {
+        console.log(id, auth_key, username, account_id);
+        API.put(`user/friend/request/decline?user_id=${account_id}&auth_key=${auth_key}&friend_id=${id}`)
+            .then(res => {
+                console.log(res.data.user_id, res.data.friend_id, res.data.id)
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -69,6 +83,16 @@ class ListitemFriend extends React.Component {
                                 >
                                     Level : {this.props.level}
 
+                                </Typography>
+                                <Typography
+                                    component="span"
+                                    variant="body2"
+                                    color="textPrimary"
+                                >
+                                    <button className="button"
+                                            onClick={() => this.removeFriend(this.props.id, this.props.username, localStorage.getItem("id"), localStorage.getItem("token"))}>
+                                        <ClearIcon fontSize="small" style={{color: "red"}}/>
+                                    </button>
                                 </Typography>
                             </React.Fragment>
                         }
