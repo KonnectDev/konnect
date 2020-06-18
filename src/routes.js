@@ -1,13 +1,10 @@
 import React from "react";
-import Homepage from "./views/Homepage";
-import Dashboard from "./views/Dashboard";
-import RegisterPage from "./views/RegisterPage";
 import Feed from "./views/Feed";
 import LeaderboardPage from "./views/LeaderboardPage";
-import InviteFriendsPage from "./views/InviteFriendsPage";
 import Settings from "./views/SettingsPage";
 import ProfilePage from "./views/ProfilePage";
 import MessagesPage from "./views/MessagesPage";
+import GuildPage from "./views/GuildPage";
 
 
 // Some folks find value in a centralized route config.
@@ -52,6 +49,12 @@ const routes = [
         path: "/messages",
         name: "Messages",
         component: MessagesPage,
+        layout: "/Dashboard"
+    },
+    {
+        path: "/guild",
+        name: "Guild",
+        component: GuildPage,
         layout: "/Dashboard"
     }
 
