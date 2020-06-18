@@ -101,7 +101,7 @@ class Dashboard extends React.Component {
         console.log(localStorage.getItem("id"));
         console.log(localStorage.getItem("username"));
         return (
-            <div className="wrapper">
+            <div className="wrapper" style={{backgroundColor: "#343a40"}}>
                 <Sidebar {...this.props} routes={routes} image={this.state.image}
                          color={this.state.color}
                          hasImage={this.state.hasImage}/>
