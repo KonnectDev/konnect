@@ -2978,13 +2978,109 @@ body > .navbar-collapse[data-color="purple"]:after {
     margin-left: -15px;
     margin-right: -15px; }
   .table-responsive {
-    overflow: visible; } }
+      overflow: visible;
+  }
+}
 
 @media (max-width: 991px) {
-  .table-responsive {
-    width: 100%;
-    margin-bottom: 15px;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-    -webkit-overflow-scrolling: touch; } }
+    .table-responsive {
+        width: 100%;
+        margin-bottom: 15px;
+        overflow-x: scroll;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+
+.navbar:after,
+body > .navbar-collapse:after {
+    background: #282828;
+    background: -moz-linear-gradient(top, #282828 0%, #111 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #282828), color-stop(100%, #111));
+    background: -webkit-linear-gradient(top, #282828 0%, #111 100%);
+    background: -o-linear-gradient(top, #282828 0%, #111 100%);
+    background: -ms-linear-gradient(top, #282828 0%, #111 100%);
+    background: linear-gradient(to bottom, #282828 0%, #111 100%);
+    background-size: 150% 150%;
+    z-index: 3;
+    opacity: 1;
+}
+
+.navbar[data-image]:after, .navbar.has-image:after,
+body > .navbar-collapse[data-image]:after,
+body > .navbar-collapse.has-image:after {
+    opacity: .77;
+}
+
+.navbar[data-color="blue"]:after,
+body > .navbar-collapse[data-color="blue"]:after {
+    background: #1b8dff;
+    background: -moz-linear-gradient(top, #1b8dff 0%, #2632c1 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1b8dff), color-stop(100%, #2632c1));
+    background: -webkit-linear-gradient(top, #1b8dff 0%, #2632c1 100%);
+    background: -o-linear-gradient(top, #1b8dff 0%, #2632c1 100%);
+    background: -ms-linear-gradient(top, #1b8dff 0%, #2632c1 100%);
+    background: linear-gradient(to bottom, #1b8dff 0%, #2632c1 100%);
+    background-size: 150% 150%;
+}
+
+.navbar[data-color="azure"]:after,
+body > .navbar-collapse[data-color="azure"]:after {
+    background: #1DC7EA;
+    background: -moz-linear-gradient(top, #1DC7EA 0%, #4091ff 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1DC7EA), color-stop(100%, #4091ff));
+    background: -webkit-linear-gradient(top, #1DC7EA 0%, #4091ff 100%);
+    background: -o-linear-gradient(top, #1DC7EA 0%, #4091ff 100%);
+    background: -ms-linear-gradient(top, #1DC7EA 0%, #4091ff 100%);
+    background: linear-gradient(to bottom, #1DC7EA 0%, #4091ff 100%);
+    background-size: 150% 150%;
+}
+
+.navbar[data-color="green"]:after,
+body > .navbar-collapse[data-color="green"]:after {
+    background: #87CB16;
+    background: -moz-linear-gradient(top, #87CB16 0%, #6dc030 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #87CB16), color-stop(100%, #6dc030));
+    background: -webkit-linear-gradient(top, #87CB16 0%, #6dc030 100%);
+    background: -o-linear-gradient(top, #87CB16 0%, #6dc030 100%);
+    background: -ms-linear-gradient(top, #87CB16 0%, #6dc030 100%);
+    background: linear-gradient(to bottom, #87CB16 0%, #6dc030 100%);
+    background-size: 150% 150%;
+}
+
+.navbar[data-color="orange"]:after,
+body > .navbar-collapse[data-color="orange"]:after {
+    background: #FFA534;
+    background: -moz-linear-gradient(top, #FFA534 0%, #ff5221 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FFA534), color-stop(100%, #ff5221));
+    background: -webkit-linear-gradient(top, #FFA534 0%, #ff5221 100%);
+    background: -o-linear-gradient(top, #FFA534 0%, #ff5221 100%);
+    background: -ms-linear-gradient(top, #FFA534 0%, #ff5221 100%);
+    background: linear-gradient(to bottom, #FFA534 0%, #ff5221 100%);
+    background-size: 150% 150%;
+}
+
+.navbar[data-color="red"]:after,
+body > .navbar-collapse[data-color="red"]:after {
+    background: #FB404B;
+    background: -moz-linear-gradient(top, #FB404B 0%, #bb0502 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FB404B), color-stop(100%, #bb0502));
+    background: -webkit-linear-gradient(top, #FB404B 0%, #bb0502 100%);
+    background: -o-linear-gradient(top, #FB404B 0%, #bb0502 100%);
+    background: -ms-linear-gradient(top, #FB404B 0%, #bb0502 100%);
+    background: linear-gradient(to bottom, #FB404B 0%, #bb0502 100%);
+    background-size: 150% 150%;
+}
+
+.navbar[data-color="purple"]:after,
+body > .navbar-collapse[data-color="purple"]:after {
+    background: #9368E9;
+    background: -moz-linear-gradient(top, #9368E9 0%, #943bea 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #9368E9), color-stop(100%, #943bea));
+    background: -webkit-linear-gradient(top, #9368E9 0%, #943bea 100%);
+    background: -o-linear-gradient(top, #9368E9 0%, #943bea 100%);
+    background: -ms-linear-gradient(top, #9368E9 0%, #943bea 100%);
+    background: linear-gradient(to bottom, #9368E9 0%, #943bea 100%);
+    background-size: 150% 150%;
+}

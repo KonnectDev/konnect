@@ -7,6 +7,7 @@ import LeaderboardPage from "./views/LeaderboardPage";
 import InviteFriendsPage from "./views/InviteFriendsPage";
 import Settings from "./views/SettingsPage";
 import ProfilePage from "./views/ProfilePage";
+import MessagesPage from "./views/MessagesPage";
 
 
 // Some folks find value in a centralized route config.
@@ -45,6 +46,12 @@ const routes = [
         path: "/settings",
         name: "Settings",
         component: Settings,
+        layout: "/Dashboard"
+    },
+    {
+        path: "/messages",
+        name: "Messages",
+        component: MessagesPage,
         layout: "/Dashboard"
     }
 

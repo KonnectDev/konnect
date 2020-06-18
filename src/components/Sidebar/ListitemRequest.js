@@ -70,13 +70,7 @@ class ListitemRequest extends React.Component {
         return (
 
             <React.Fragment>
-                {
 
-                    this.props.loading ?
-
-                        <FingerprintSpinner className="loader" size={200}/>
-
-                        :
                         <ListItem alignItems="flex-start">
                             <ListItemAvatar>
                                 <StyledBadge
@@ -111,7 +105,6 @@ class ListitemRequest extends React.Component {
                                 }
                             />
                         </ListItem>
-                }
             </React.Fragment>
         );
     }

@@ -16,9 +16,7 @@ import "../assets/css/animate.min.css";
 import "../assets/sass/light-bootstrap-dashboard-react.scss?v=1.3.0";
 import "../assets/css/demo.css";
 import "../assets/css/pe-icon-7-stroke.css";
-
-
-
+import SettingsPanel from "../components/Settings/SettingsPanel";
 
 
 class Dashboard extends React.Component {
@@ -109,6 +107,7 @@ class Dashboard extends React.Component {
                          hasImage={this.state.hasImage}/>
                 <div id="main-panel" className="main-panel" ref="mainPanel">
                     <UserNavbar
+                        color={this.state.color}
                         {...this.props}
                         brandText={this.getBrandText(this.props.location.pathname)}
                     />
@@ -116,16 +115,7 @@ class Dashboard extends React.Component {
                         <Redirect from="/Dashboard" to="/Dashboard/feed"/>
 
                     </Switch>
-                    <FixedPlugin
-                        handleImageClick={this.handleImageClick}
-                        handleColorClick={this.handleColorClick}
-                        handleHasImage={this.handleHasImage}
-                        bgColor={this.state["color"]}
-                        bgImage={this.state["image"]}
-                        mini={this.state["mini"]}
-                        handleFixedClick={this.handleFixedClick}
-                        fixedClasses={this.state.fixedClasses}
-                    />
+                    <SettingsPanel/>
                 </div>
             </div>
 

@@ -90,13 +90,13 @@ export default class Sidebar extends React.Component {
                 className="sidebar"
                 data-color={this.props.color}
                 data-image={this.props.image}
-                style={{marginTop: "0px"}}
+                style={{marginTop: "0px", overflowX: "hidden"}}
             >
 
                 <div className="logo">
-                    <NavLink to=""><img src={logo} alt="logo_image" width="200px"/></NavLink>
+                    <NavLink to="/Dashboard"><img src={logo} alt="logo_image" width="200px"/></NavLink>
                 </div>
-                <div className="sidebar-wrapper">
+                <div className="sidebar-wrapper" style={{overflowX: "hidden"}}>
                     <ul className="nav">
                         {this.state.width <= 991 ? <UserNavbarLinks/> : null}
                         <div className="Online"><p>Total
