@@ -1,18 +1,18 @@
-.gridcontainer {
+.gridContainerFeed {
     display: grid;
     grid-template-columns: 80% 20%;
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: 100%;
 }
 
-.gridchild1 {
+.gridChildFeed1 {
     display: grid;
     background-color: purple;
     width: 100%;
     height: 100%;
 }
 
-.gridchild2 {
+.gridChildFeed2 {
     display: grid;
     background-color: black;
     width: 100%;
