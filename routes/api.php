@@ -40,3 +40,9 @@ Route::middleware([VerifyAuthKey::class])->delete('user/friend/request/decline',
 Route::middleware([VerifyAuthKey::class])->post('user/friends', 'UserFriendController@userFriends');
 Route::middleware([VerifyAuthKey::class])->post('user/notfriends', 'UserFriendController@userNotFriends');
 Route::middleware([VerifyAuthKey::class])->post('user/friends/requests', 'UserFriendController@userFriendRequests');
+
+//Guilds
+Route::middleware([VerifyAuthKey::class])->get('user/guilds', 'GuildController@getUserGuilds');
+Route::middleware([VerifyAuthKey::class])->get('guilds', 'GuildController@getGuilds');
+Route::middleware([VerifyAuthKey::class])->get('guild/{id}', 'GuildController@getGuilds');
+Route::middleware([VerifyAuthKey::class])->get('guild/{id}/members', 'GuildController@getGuildMembers');
