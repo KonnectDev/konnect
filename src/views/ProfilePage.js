@@ -1,5 +1,6 @@
 import React from "react";
 import API from "../utils/API";
+import "../assets/css/ProfilePage.scss";
 
 
 class ProfilePage extends React.Component {
@@ -32,12 +33,14 @@ class ProfilePage extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>{this.state.user.username}</h1>
-                <p>{this.state.user.bio}</p>
-                <p>{this.state.user.img_medium}</p>
-                <p>{this.state.user.level}</p>
-                <p>{this.state.user.koins}</p>
+            <div className="gridContainerProfile">
+                <div className="gridChildUsername"><h1>{this.state.user.username}</h1></div>
+                <div className="gridChildFirstname"><p>{this.state.user.firstname}</p></div>
+                <div className="gridChildLastname"><p>{this.state.user.lastname}</p></div>
+                <div className="gridChildBio"><p>{this.state.user.bio}</p></div>
+                <div className="gridChildImg"><img src={this.state.user.img_medium}/></div>
+                <div className="gridChildLevel"><p>Level: {this.state.user.level}</p></div>
+                <div className="gridChildKoins"><p>Koins: {this.state.user.koins}</p></div>
             </div>
         );
     }
