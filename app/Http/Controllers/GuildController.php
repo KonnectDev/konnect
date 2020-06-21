@@ -18,7 +18,9 @@ class GuildController extends Controller
     }
 
     public function getGuildMembers($guildId) {
-        $guildMembers = GuildMember::where('guild_id', $guildId)->get();
+        $guildMembers = GuildMember::where('guild_id', $guildId)->join('users', function ($join) {
+            $join->on('users.id', '=', 'guild_members.user_id');
+        })->get(['users.id', 'users.username', 'users.img_small', 'users.level', 'guild_members.guild_rank']);
         return response()->json($guildMembers, 200);
     }
 
