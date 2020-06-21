@@ -60,6 +60,17 @@ export default class Sidebar extends React.Component {
             });
 
 
+        API
+            .get(`guild/1/members?user_id=${id}&auth_key=${auth_key}`)
+            .then(response => {
+                console.log(response.data);
+                this.setState({guild: response.data})
+            })
+            .catch(err => {
+                console.log(err)
+            });
+
+
         this.updateDimensions();
         window.addEventListener("resize", this.updateDimensions.bind(this));
     }
