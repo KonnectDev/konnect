@@ -139,6 +139,7 @@ export default class Sidebar extends React.Component {
                                                 username={friend.username}
                                                 level={friend.level}
                                                 koins={1003}
+                                                id={friend.id}
                                             />
                                         ))
                             }

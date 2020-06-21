@@ -1,6 +1,6 @@
 import React from "react";
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import { connect } from 'react-redux';
+import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
+import {connect} from 'react-redux';
 import Error from "./404";
 import * as actions from './store/actions/auth';
 
@@ -28,7 +28,7 @@ class App extends React.Component {
             <Router>
                 <Switch>
                     <Route exact path="/">
-                        <Homepage {...this.props}/>
+                        <Redirect from="/" to="/sign-in"/>
                     </Route>
                     <Route exact path="/sign-in">
                         <LoginPage {...this.props} />

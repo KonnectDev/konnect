@@ -56,13 +56,7 @@ class InviteFriends extends React.Component {
     render() {
         return (
             <div className="invite">
-                {
 
-                    this.props.loading ?
-
-                        <FingerprintSpinner className="loader" size={200}/>
-
-                        :
                         <List dense>
                             <Search searchText={this.searchText}/>
                             {
@@ -98,7 +92,6 @@ class InviteFriends extends React.Component {
 
 
                         </List>
-                }
             </div>
         );
     }

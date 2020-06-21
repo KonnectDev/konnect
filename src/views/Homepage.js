@@ -32,6 +32,6 @@ const mapDispatchToProps = dispatch => {
     return {
         logout: () => dispatch(actions.logout())
     }
-}
+};
 
 export default connect(null, mapDispatchToProps)(Homepage);

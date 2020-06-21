@@ -1,15 +1,15 @@
 import React from "react";
 import "../../assets/css/GuildNavbar.css";
-
+import {NavLink} from "react-router-dom";
 
 class guildNavbar extends React.Component {
     render() {
         return (
             <div className="topnav">
-                <a className="active" href="#home">Guild</a>
-                <a href="#contact">Settings</a>
-                <a href="#about">Members</a>
-                <a href="#leaderboards">Leaderboards</a>
+                <NavLink className="active" to="/Dashboard/guild/feed">Guild</NavLink>
+                <NavLink to="/Dashboard/guild/settings">Settings</NavLink>
+                <NavLink to="/Dashboard/guild/members">Members</NavLink>
+                <NavLink to="/Dashboard/guild/leaderboards">Leaderboards</NavLink>
             </div>
         );
     }

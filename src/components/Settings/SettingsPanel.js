@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import React, {useState} from 'react';
 import OpenWithIcon from '@material-ui/icons/OpenWith';
 import CloseIcon from '@material-ui/icons/Close';
+import SettingsIcon from '@material-ui/icons/Settings';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     const theme = useTheme();
@@ -53,6 +54,7 @@ const useStyles = makeStyles(theme => ({
         maxWidth: '90vw',
         backgroundColor: '#222323',
         color: 'white',
+        opacity: '0.9',
         boxShadow: theme.shadows[5],
         top: 0,
         height: '100%',
@@ -80,7 +82,7 @@ function SettingsPanel() {
     return (
         <>
             <Button id="fuse-settings" className={classes.button} variant="contained" onClick={handleOpen}>
-                <OpenWithIcon className={classes.buttonIcon}/>
+                <SettingsIcon className={classes.buttonIcon}/>
 
 
             </Button>

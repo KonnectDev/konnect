@@ -9,6 +9,7 @@ import Badge from "@material-ui/core/Badge";
 import CheckIcon from "@material-ui/icons/Check";
 import ClearIcon from "@material-ui/icons/Clear";
 import API from "../../utils/API";
+import {withRouter, NavLink} from "react-router-dom";
 
 
 const StyledBadge = withStyles((theme) => ({
@@ -45,7 +46,7 @@ class ListitemFriend extends React.Component {
 
     removeFriend(id, username, account_id, auth_key) {
         console.log(id, auth_key, username, account_id);
-        API.put(`user/friend/request/decline?user_id=${account_id}&auth_key=${auth_key}&friend_id=${id}`)
+        API.delete(`user/friend/delete?user_id=${account_id}&auth_key=${auth_key}&friend_id=${id}`)
             .then(res => {
                 console.log(res.data.user_id, res.data.friend_id, res.data.id)
             })
@@ -53,6 +54,7 @@ class ListitemFriend extends React.Component {
                 console.log(err);
             });
     }
+
 
     render() {
         return (
@@ -67,7 +69,9 @@ class ListitemFriend extends React.Component {
                             }}
                             variant="dot"
                         >
-                            <Avatar alt="" src={this.props.src}/>
+                            <NavLink to={`/Dashboard/profile/${this.props.username}`}>
+                                <Avatar alt="" src={this.props.src}/>
+                            </NavLink>
                         </StyledBadge>
                     </ListItemAvatar>
                     <ListItemText
@@ -105,4 +109,4 @@ class ListitemFriend extends React.Component {
 }
 
 
-export default ListitemFriend;
+export default withRouter(ListitemFriend);
