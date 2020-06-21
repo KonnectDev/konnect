@@ -6,9 +6,9 @@ class Feed extends React.Component {
     render() {
         return (
             <div>
-                <div className="gridcontainer">
-                    <div className="gridchild1">1</div>
-                    <div className="gridchild2">2</div>
+                <div className="gridContainerFeed">
+                    <div className="gridChildFeed1">1</div>
+                    <div className="gridChildFeed2">2</div>
                 </div>
             </div>
         );

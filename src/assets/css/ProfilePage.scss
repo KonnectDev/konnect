@@ -1,0 +1,77 @@
+.gridContainerProfile {
+    display: grid;
+    width: 100%;
+    height: 400px;
+    background-color: #1F2020;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: auto;
+    grid-template-areas: ". Img Username Username" ". Firstname Lastname . " ". Level Koins ." "Bio Bio Bio Bio";
+}
+
+.gridChildUsername {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    text-align: Left;
+    padding: 55px;
+    grid-area: Username;
+    color: #B2B4B6;
+}
+
+.gridChildFirstname {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    text-align: right;
+    padding: 5px;
+    grid-area: Firstname;
+    color: #B2B4B6;
+}
+
+.gridChildLastname {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    padding: 5px;
+    grid-area: Lastname;
+    color: #B2B4B6;
+}
+
+.gridChildBio {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    grid-area: Bio;
+    color: #B2B4B6;
+}
+
+.gridChildImg {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    float: right;
+    padding: 5px;
+    grid-area: Img;
+}
+
+.gridChildLevel {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    text-align: right;
+    padding: 5px;
+    grid-area: Level;
+    color: #B2B4B6;
+}
+
+.gridChildKoins {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    padding: 5px;
+    grid-area: Koins;
+    color: #B2B4B6;
+}
