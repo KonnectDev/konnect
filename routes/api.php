@@ -27,8 +27,8 @@ Route::get('user/{id}', 'UserController@show');
 Route::get('user/{id}/{string}', 'UserController@showDetailed');
 Route::post('user/login', 'UserController@login');
 Route::put('user/register', 'UserController@register');
-Route::post('user/forgotpassword','auth\ForgotPasswordController@ForgotPasswordController' );
-Route::put('user/resetpassword','auth\resetpasswordcontroller@ResetPasswordController');
+//Route::post('user/forgotpassword','auth\ForgotPasswordController@ForgotPasswordController' );
+//Route::put('user/resetpassword','auth\resetpasswordcontroller@ResetPasswordController');
 
 // api/user/friend
 Route::middleware([VerifyAuthKey::class])->put('user/friend/add', 'UserFriendController@add');
@@ -38,4 +38,5 @@ Route::middleware([VerifyAuthKey::class])->delete('user/friend/request/decline',
 
 //Must be get, but ain't working.
 Route::middleware([VerifyAuthKey::class])->post('user/friends', 'UserFriendController@userFriends');
+Route::middleware([VerifyAuthKey::class])->post('user/notfriends', 'UserFriendController@userNotFriends');
 Route::middleware([VerifyAuthKey::class])->post('user/friends/requests', 'UserFriendController@userFriendRequests');
