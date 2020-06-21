@@ -1,14 +1,19 @@
 import React from "react";
+import "../../assets/css/GuildNavbar.css";
 
 
-class GuildNavbar extends React.Component {
+class guildNavbar extends React.Component {
     render() {
         return (
-            <div>
-                Navbar
+            <div className="topnav">
+                <a className="active" href="#home">Guild</a>
+                <a href="#contact">Settings</a>
+                <a href="#about">Members</a>
+                <a href="#leaderboards">Leaderboards</a>
             </div>
         );
     }
 }
 
-export default GuildNavbar;
+
+export default guildNavbar;
