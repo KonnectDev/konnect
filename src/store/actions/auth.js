@@ -1,4 +1,4 @@
-import * as actionTypes from './actionsTypes';
+import * as actionTypes from '../actionsTypes';
 import axios from 'axios';
 import API from '../../utils/API';
 import {browserHistory} from '../../index';
@@ -22,7 +22,7 @@ export const authDoesntMatch = message => {
         type: actionTypes.AUTH_DOESNT_MATCH,
         message: message
     }
-}
+};
 
 export const authFail = error => {
     return {
