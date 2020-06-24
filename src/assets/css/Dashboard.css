@@ -110,9 +110,11 @@ h1 .subtitle {
 /*     General overwrite     */
 body,
 .wrapper {
-  min-height: 100vh;
-  position: relative;
-  background-color: white; }
+    min-height: 100vh;
+    position: relative;
+    overflow: auto;
+    background-color: white;
+}
 
 a {
   color: #1DC7EA; }
@@ -313,7 +315,7 @@ body > .navbar-collapse .logo-tim {
   height: 61px;
   width: 61px;
   float: left;
-  overflow: hidden; }
+}
   .sidebar .logo-tim img,
   body > .navbar-collapse .logo-tim img {
     width: 60px;
