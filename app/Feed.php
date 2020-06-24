@@ -2,7 +2,6 @@
 
 namespace App;
 use Illuminate\Database\Eloquent\Model;
-use App\FeedLikes;
 
 class Feed extends Model
 {
@@ -14,8 +13,12 @@ class Feed extends Model
         return $this->hasMany('App\FeedLikes', 'message_id', 'id');
     }
 
+    public function userinfo() {
+        return $this->hasOne('App\User', 'id', 'user_id');
+    }
+
     public function replies() {
-        return $this->belongsTo('feed_messages', 'message_id');
+        return $this->hasMany('App\Feed', 'message_id', 'id');
     }
 
 
