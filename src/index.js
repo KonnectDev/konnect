@@ -3,21 +3,14 @@ import ReactDOM from 'react-dom';
 import './assets/css/index.scss';
 import * as serviceWorker from './serviceWorker';
 import App from "./App";
-import { createStore, compose, applyMiddleware } from "redux";
-import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
+import store from "./store/store";
+import {Provider} from 'react-redux';
 import { createBrowserHistory } from 'history';
 
-import reducer from './store/reducers/all';
 
 
 export const browserHistory = createBrowserHistory();
 
-const composeEnhances = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-const store = createStore(reducer, composeEnhances(
-    applyMiddleware(thunk)
-));
 
 const app = (
     <Provider store={store}>

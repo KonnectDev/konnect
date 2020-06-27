@@ -3,7 +3,6 @@ import {Link, NavLink, withRouter, Switch, Route, Redirect} from "react-router-d
 import UserNavbar from '../components/Navbar/UserNavbar';
 import { connect } from "react-redux";
 import * as actions from '../store/actions/auth';
-import '../assets/css/Dashboard.scss';
 import Sidebar from "../components/Sidebar/Sidebar";
 import LeaderboardPage from "./LeaderboardPage";
 import Error from "../404";
@@ -17,6 +16,8 @@ import "../assets/sass/light-bootstrap-dashboard-react.scss?v=1.3.0";
 import "../assets/css/demo.css";
 import "../assets/css/pe-icon-7-stroke.css";
 import SettingsPanel from "../components/Settings/SettingsPanel";
+import '../assets/css/Dashboard.scss';
+import '../assets/css/Dashboard.css';
 
 
 class Dashboard extends React.Component {
@@ -80,20 +81,6 @@ class Dashboard extends React.Component {
         }
     };
 
-    componentDidUpdate(e) {
-        if (
-            window.innerWidth < 993 &&
-            e.history.location.pathname !== e.location.pathname &&
-            document.documentElement.className.indexOf("nav-open") !== -1
-        ) {
-            document.documentElement.classList.toggle("nav-open");
-        }
-        if (e.history.action === "PUSH") {
-            document.documentElement.scrollTop = 0;
-            document.scrollingElement.scrollTop = 0;
-            this.refs.mainPanel.scrollTop = 0;
-        }
-    }
 
 
     render() {
@@ -111,7 +98,10 @@ class Dashboard extends React.Component {
                         {...this.props}
                         brandText={this.getBrandText(this.props.location.pathname)}
                     />
-                    <Switch>{this.getRoutes(routes)}
+                    <Switch>
+                        <div className="content">
+                            {this.getRoutes(routes)}
+                        </div>
                         <Redirect from="/Dashboard" to="/Dashboard/feed"/>
 
                     </Switch>

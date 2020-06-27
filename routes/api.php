@@ -46,3 +46,7 @@ Route::middleware([VerifyAuthKey::class])->get('user/guilds', 'GuildController@g
 Route::middleware([VerifyAuthKey::class])->get('guilds', 'GuildController@getGuilds');
 Route::middleware([VerifyAuthKey::class])->get('guild/{id}', 'GuildController@getGuilds');
 Route::middleware([VerifyAuthKey::class])->get('guild/{id}/members', 'GuildController@getGuildMembers');
+
+//Posts
+Route::middleware([VerifyAuthKey::class])->get('posts', 'FeedController@getMessages');
+Route::middleware([VerifyAuthKey::class])->get('post/{id}', 'FeedController@getMessages');

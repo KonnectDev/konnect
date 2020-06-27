@@ -1,4 +1,4 @@
-import * as actionTypes from './actionsTypes';
+import * as actionTypes from '../actionsTypes';
 import axios from 'axios';
 import API from '../../utils/API';
 import {browserHistory} from '../../index';
