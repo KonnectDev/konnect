@@ -27,8 +27,9 @@ Route::get('user/{id}', 'UserController@show');
 Route::get('user/{id}/{string}', 'UserController@showDetailed');
 Route::post('user/login', 'UserController@login');
 Route::put('user/register', 'UserController@register');
-//Route::post('user/forgotpassword','auth\ForgotPasswordController@ForgotPasswordController' );
-//Route::put('user/resetpassword','auth\resetpasswordcontroller@ResetPasswordController');
+Route::post('reset_password_without_token', 'UserController@validatePasswordRequest');
+Route::post('reset_password_with_token', 'UserController@resetPassword');
+
 
 // api/user/friend
 Route::middleware([VerifyAuthKey::class])->put('user/friend/add', 'UserFriendController@add');
