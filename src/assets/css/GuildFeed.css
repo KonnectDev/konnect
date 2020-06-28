@@ -1,20 +1,21 @@
 .gridContainerFeed {
     display: grid;
-    grid-template-columns: 80% 20%;
+    grid-template-columns: 83% 17%;
     width: 100%;
     height: 100%;
 }
 
 .gridChildFeed1 {
     display: grid;
-    background-color: purple;
+    background-color: #43494E;
     width: 100%;
     height: 100%;
 }
 
 .gridChildFeed2 {
     display: grid;
-    background-color: black;
+    background-color: #222323;
     width: 100%;
     height: 100%;
 }
+
