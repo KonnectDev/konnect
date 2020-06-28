@@ -13,6 +13,11 @@ class Feed extends Model
         return $this->hasMany('App\FeedLikes', 'message_id', 'id');
     }
 
+    public function likedByUser($id) {
+        return $this->hasMany('App\FeedLikes', 'message_id', 'id')->where('feed_likes.user_id', '=', $id);
+
+    }
+
     public function userinfo() {
         return $this->hasOne('App\User', 'id', 'user_id');
     }

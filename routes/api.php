@@ -50,3 +50,6 @@ Route::middleware([VerifyAuthKey::class])->get('guild/{id}/members', 'GuildContr
 //Posts
 Route::middleware([VerifyAuthKey::class])->get('posts', 'FeedController@getMessages');
 Route::middleware([VerifyAuthKey::class])->get('post/{id}', 'FeedController@getMessages');
+Route::middleware([VerifyAuthKey::class])->post('post', 'FeedController@replyMessage');
+Route::middleware([VerifyAuthKey::class])->post('post/{id}', 'FeedController@replyMessage');
+Route::middleware([VerifyAuthKey::class])->post('post/{id}/like', 'FeedController@likeMessage');
