@@ -37,7 +37,7 @@
         "@testing-library/user-event": "^7.1.2",
         "@trodi/electron-splashscreen": "^1.0.0",
         "antd": "^4.3.4",
-        "axios": "^0.19.2",
+        "axios": "^0.21.1",
         "bootstrap": "^4.5.0",
         "classnames": "^2.2.6",
         "clsx": "^1.1.1",
@@ -85,7 +85,7 @@
         "zxcvbn": "^4.4.2"
     },
     "devDependencies": {
-        "axios": "^0.19",
+        "axios": "^0.21",
         "cross-env": "^7.0",
         "electron": "^9.0.4",
         "electron-builder": "^22.7.0",
