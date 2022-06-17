@@ -87,7 +87,7 @@
     "devDependencies": {
         "axios": "^0.19",
         "cross-env": "^7.0",
-        "electron": "^9.0.4",
+        "electron": "^15.5.5",
         "electron-builder": "^22.7.0",
         "electron-reload": "^1.5.0",
         "laravel-mix": "^5.0.1",
